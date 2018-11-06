@@ -1,4 +1,4 @@
 # 1418-rocket-sim
 Rocket simulation
 
-Editing this with atom, does it work?
+Welcome to the 1418 rockets simulation
