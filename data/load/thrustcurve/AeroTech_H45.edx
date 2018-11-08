@@ -1,0 +1,38 @@
+00  MRev 01......:
+01  Designation..: H45W
+02  Data date....: 05/31/98
+03  Manufacturer.: AeroTech
+04  Cost.........:
+05  Grain type...:
+06  Propellant ID:
+07  O.D..........: 1.5
+08  Case Len.....: 7.625
+09  Wgt Units....: G
+10  Specs........: T
+11  Wt Prop. gms.: 194.0
+12  Load Wt. gms.: 294.8
+13  Burn time....: 6.960
+14  Favg Lbs.....: 9.44114
+15  Favg Newtons.: 41.996
+16  TotImp Lbsecs: 65.7143
+17  TotImp Ntsecs: 292.312
+18  REM1.........: converted from TMT test stand data 1998 (www.tripoli.org)
+19  REM2.........: provided by ThrustCurve.org (www.thrustcurve.org)
+20  Time /Thrust.: 0.27     14.156
+20  Time /Thrust.: 0.82     15.026
+20  Time /Thrust.: 1.36     15.533
+20  Time /Thrust.: 1.91     15.021
+20  Time /Thrust.: 2.46     14.037
+20  Time /Thrust.: 3.00     12.408
+20  Time /Thrust.: 3.55     10.166
+20  Time /Thrust.: 4.09      7.848
+20  Time /Thrust.: 4.64      5.704
+20  Time /Thrust.: 5.18      4.087
+20  Time /Thrust.: 5.73      2.977
+20  Time /Thrust.: 6.28      2.209
+20  Time /Thrust.: 6.82      1.538
+20  Time /Thrust.: 6.96      0.000
+61  Mass Fraction: 0.658
+62  Isp lb/s/lb..: 151.765
+63  Rating.......: 292-H-42
+64  Pct Full.....: 82% H

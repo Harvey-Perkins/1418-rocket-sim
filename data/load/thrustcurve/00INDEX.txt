@@ -1,0 +1,1837 @@
+Rocket motor simulation data downloaded from ThrustCurve.org.
+This ZIP file contains 262 simulator data files.
+For more info, please see http://www.thrustcurve.org/
+
+AeroTech_D10.eng
+    Manufacturer: AeroTech
+    Designation:  D10W
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+AeroTech_D21.eng
+    Manufacturer: AeroTech
+    Designation:  D21T
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Christopher Kobel
+
+AeroTech_D21.rse
+    Manufacturer: AeroTech
+    Designation:  D21T
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+AeroTech_E15.eng
+    Manufacturer: AeroTech
+    Designation:  E15W
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  John Coker
+
+AeroTech_E15.rse
+    Manufacturer: AeroTech
+    Designation:  E15W
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+AeroTech_E15_1.eng
+    Manufacturer: AeroTech
+    Designation:  E15W
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+AeroTech_E15_2.eng
+    Manufacturer: AeroTech
+    Designation:  E15W
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Christopher Kobel
+
+AeroTech_E20.eng
+    Manufacturer: AeroTech
+    Designation:  E20W
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  John Coker
+
+AeroTech_E30.eng
+    Manufacturer: AeroTech
+    Designation:  E30T
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Christopher Kobel
+
+AeroTech_E30.rse
+    Manufacturer: AeroTech
+    Designation:  E30T
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+AeroTech_E6.eng
+    Manufacturer: AeroTech
+    Designation:  E6
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+AeroTech_F10.eng
+    Manufacturer: AeroTech
+    Designation:  F10
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+AeroTech_F20.eng
+    Manufacturer: AeroTech
+    Designation:  F20W/L
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  John Coker
+
+AeroTech_F20.rse
+    Manufacturer: AeroTech
+    Designation:  F20W/L
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+AeroTech_F20_1.eng
+    Manufacturer: AeroTech
+    Designation:  F20W/L
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+AeroTech_F21.eng
+    Manufacturer: AeroTech
+    Designation:  F21W
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  Stan Hemphill
+
+AeroTech_F21.rse
+    Manufacturer: AeroTech
+    Designation:  F21W
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+AeroTech_F23.eng
+    Manufacturer: AeroTech
+    Designation:  F23FJ/L
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+AeroTech_F23.rse
+    Manufacturer: AeroTech
+    Designation:  F23FJ/L
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+AeroTech_F25.eng
+    Manufacturer: AeroTech
+    Designation:  F25W
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+AeroTech_F25.rse
+    Manufacturer: AeroTech
+    Designation:  F25W
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+AeroTech_F26.eng
+    Manufacturer: AeroTech
+    Designation:  F26FJ
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+AeroTech_F26.rse
+    Manufacturer: AeroTech
+    Designation:  F26FJ
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+AeroTech_F27.eng
+    Manufacturer: AeroTech
+    Designation:  F27R/L
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+AeroTech_F30.eng
+    Manufacturer: AeroTech
+    Designation:  F30FJ
+    Data Format:  RASP
+    Data Source:  mfr
+    Contributor:  Christopher Kobel
+
+AeroTech_F32.eng
+    Manufacturer: AeroTech
+    Designation:  F32T
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  John Coker
+
+AeroTech_F32.rse
+    Manufacturer: AeroTech
+    Designation:  F32T
+    Data Format:  RockSim
+    Data Source:  cert
+    Contributor:  John Coker
+
+AeroTech_F32_1.eng
+    Manufacturer: AeroTech
+    Designation:  F32W
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+AeroTech_F32_1.rse
+    Manufacturer: AeroTech
+    Designation:  F32W
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+AeroTech_F42.eng
+    Manufacturer: AeroTech
+    Designation:  F42T/L
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+AeroTech_F42.rse
+    Manufacturer: AeroTech
+    Designation:  F42T/L
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+AeroTech_F44.eng
+    Manufacturer: AeroTech
+    Designation:  F44W
+    Data Format:  RASP
+    Data Source:  mfr
+    Contributor:  Mark Koelsch
+
+AeroTech_F50.eng
+    Manufacturer: AeroTech
+    Designation:  F50T
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+AeroTech_F50.rse
+    Manufacturer: AeroTech
+    Designation:  F50T
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+AeroTech_F67.eng
+    Manufacturer: AeroTech
+    Designation:  F67W
+    Data Format:  RASP
+    Data Source:  mfr
+    Contributor:  Mark Koelsch
+
+AeroTech_F67.rse
+    Manufacturer: AeroTech
+    Designation:  F67W
+    Data Format:  RockSim
+    Data Source:  mfr
+    Contributor:  Mark Koelsch
+
+AeroTech_F72.eng
+    Manufacturer: AeroTech
+    Designation:  F72
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+AeroTech_F72.rse
+    Manufacturer: AeroTech
+    Designation:  F72
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+AeroTech_G11.eng
+    Manufacturer: AeroTech
+    Designation:  G11
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+AeroTech_G11.rse
+    Manufacturer: AeroTech
+    Designation:  G11
+    Data Format:  RockSim
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+AeroTech_G12.eng
+    Manufacturer: AeroTech
+    Designation:  G12
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+AeroTech_G12.rse
+    Manufacturer: AeroTech
+    Designation:  G12
+    Data Format:  RockSim
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+AeroTech_G125.eng
+    Manufacturer: AeroTech
+    Designation:  G125T
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+AeroTech_G142.eng
+    Manufacturer: AeroTech
+    Designation:  G142T
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  John Coker
+
+AeroTech_G35.eng
+    Manufacturer: AeroTech
+    Designation:  G35
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+AeroTech_G35.rse
+    Manufacturer: AeroTech
+    Designation:  G35
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+AeroTech_G38.eng
+    Manufacturer: AeroTech
+    Designation:  G38FJ
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+AeroTech_G38.rse
+    Manufacturer: AeroTech
+    Designation:  G38FJ
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+AeroTech_G40.eng
+    Manufacturer: AeroTech
+    Designation:  G40W
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+AeroTech_G40.rse
+    Manufacturer: AeroTech
+    Designation:  G40W
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+AeroTech_G55.eng
+    Manufacturer: AeroTech
+    Designation:  G55
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+AeroTech_G55.rse
+    Manufacturer: AeroTech
+    Designation:  G55
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+AeroTech_G74.eng
+    Manufacturer: AeroTech
+    Designation:  G74W
+    Data Format:  RASP
+    Data Source:  mfr
+    Contributor:  Mark Koelsch
+
+AeroTech_G75.rse
+    Manufacturer: AeroTech
+    Designation:  HP-G75M
+    Data Format:  RockSim
+    Data Source:  mfr
+    Contributor:  Mark Koelsch
+
+AeroTech_G77.eng
+    Manufacturer: AeroTech
+    Designation:  G77R/L
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+AeroTech_G78.eng
+    Manufacturer: AeroTech
+    Designation:  G78G/L
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  John Coker
+
+AeroTech_G78_1.eng
+    Manufacturer: AeroTech
+    Designation:  G78G/L
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  John Coker
+
+AeroTech_G79.eng
+    Manufacturer: AeroTech
+    Designation:  G79W/L
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  John Coker
+
+AeroTech_G8.eng
+    Manufacturer: AeroTech
+    Designation:  G8ST
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+AeroTech_G8.rse
+    Manufacturer: AeroTech
+    Designation:  G8ST
+    Data Format:  RockSim
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+AeroTech_G80.eng
+    Manufacturer: AeroTech
+    Designation:  G80T
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  John Coker
+
+AeroTech_G80_1.eng
+    Manufacturer: AeroTech
+    Designation:  G80T
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  John DeMar
+
+AeroTech_G80_2.eng
+    Manufacturer: AeroTech
+    Designation:  G80T
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  John DeMar
+
+AeroTech_H100.eng
+    Manufacturer: AeroTech
+    Designation:  H100W DMS
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+AeroTech_H115.eng
+    Manufacturer: AeroTech
+    Designation:  HP-H115DM
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+AeroTech_H125.edx
+    Manufacturer: AeroTech
+    Designation:  H125W
+    Data Format:  ALT4
+    Data Source:  cert
+    Contributor:  John Coker
+
+AeroTech_H125.eng
+    Manufacturer: AeroTech
+    Designation:  H125W
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  John Coker
+
+AeroTech_H125.rse
+    Manufacturer: AeroTech
+    Designation:  H125W
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+AeroTech_H125.txt
+    Manufacturer: AeroTech
+    Designation:  H125W
+    Data Format:  CompuRoc
+    Data Source:  cert
+    Contributor:  John Coker
+
+AeroTech_H135.eng
+    Manufacturer: AeroTech
+    Designation:  HP-H135W
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Robert Belknap
+
+AeroTech_H182.eng
+    Manufacturer: AeroTech
+    Designation:  HP-H182R
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  Mike Caplinger
+
+AeroTech_H195.eng
+    Manufacturer: AeroTech
+    Designation:  HP-H195NT
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  John Coker
+
+AeroTech_H219.eng
+    Manufacturer: AeroTech
+    Designation:  H219BT
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+AeroTech_H283.eng
+    Manufacturer: AeroTech
+    Designation:  H283ST
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+AeroTech_H45.edx
+    Manufacturer: AeroTech
+    Designation:  H45W
+    Data Format:  ALT4
+    Data Source:  cert
+    Contributor:  John Coker
+
+AeroTech_H45.eng
+    Manufacturer: AeroTech
+    Designation:  HP-H45W
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  Mike Caplinger
+
+AeroTech_H45.rse
+    Manufacturer: AeroTech
+    Designation:  H45W
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+AeroTech_H45.txt
+    Manufacturer: AeroTech
+    Designation:  H45W
+    Data Format:  CompuRoc
+    Data Source:  cert
+    Contributor:  John Coker
+
+AeroTech_H45_1.eng
+    Manufacturer: AeroTech
+    Designation:  H45W
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  John Coker
+
+AeroTech_H55.edx
+    Manufacturer: AeroTech
+    Designation:  H55W
+    Data Format:  ALT4
+    Data Source:  cert
+    Contributor:  John Coker
+
+AeroTech_H55.eng
+    Manufacturer: AeroTech
+    Designation:  H55W
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  John Coker
+
+AeroTech_H55.rse
+    Manufacturer: AeroTech
+    Designation:  H55W
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+AeroTech_H55.txt
+    Manufacturer: AeroTech
+    Designation:  H55W
+    Data Format:  CompuRoc
+    Data Source:  cert
+    Contributor:  John Coker
+
+AeroTech_H550.eng
+    Manufacturer: AeroTech
+    Designation:  HP-H550ST
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+AeroTech_H70.edx
+    Manufacturer: AeroTech
+    Designation:  H70W
+    Data Format:  ALT4
+    Data Source:  cert
+    Contributor:  John Coker
+
+AeroTech_H70.eng
+    Manufacturer: AeroTech
+    Designation:  H70W
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  John Coker
+
+AeroTech_H70.rse
+    Manufacturer: AeroTech
+    Designation:  H70W
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+AeroTech_H70.txt
+    Manufacturer: AeroTech
+    Designation:  H70W
+    Data Format:  CompuRoc
+    Data Source:  cert
+    Contributor:  John Coker
+
+AeroTech_I132.edx
+    Manufacturer: AeroTech
+    Designation:  I132W
+    Data Format:  ALT4
+    Data Source:  cert
+    Contributor:  John Coker
+
+AeroTech_I132.eng
+    Manufacturer: AeroTech
+    Designation:  I132W
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  John Coker
+
+AeroTech_I132.rse
+    Manufacturer: AeroTech
+    Designation:  I132W
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+AeroTech_I132.txt
+    Manufacturer: AeroTech
+    Designation:  I132W
+    Data Format:  CompuRoc
+    Data Source:  cert
+    Contributor:  John Coker
+
+AeroTech_I140.eng
+    Manufacturer: AeroTech
+    Designation:  HP-I140W
+    Data Format:  RASP
+    Data Source:  mfr
+    Contributor:  Mark Koelsch
+
+AeroTech_I205.eng
+    Manufacturer: AeroTech
+    Designation:  HP-I205W
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  Mike Caplinger
+
+AeroTech_I280.eng
+    Manufacturer: AeroTech
+    Designation:  HP-I280DM
+    Data Format:  RASP
+    Data Source:  mfr
+    Contributor:  Mark Koelsch
+
+AeroTech_I350.eng
+    Manufacturer: AeroTech
+    Designation:  I350R
+    Data Format:  RASP
+    Data Source:  mfr
+    Contributor:  Mark Hairfield
+
+AeroTech_I500.eng
+    Manufacturer: AeroTech
+    Designation:  HP-I500T
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+AeroTech_I65.edx
+    Manufacturer: AeroTech
+    Designation:  I65W
+    Data Format:  ALT4
+    Data Source:  cert
+    Contributor:  John Coker
+
+AeroTech_I65.eng
+    Manufacturer: AeroTech
+    Designation:  HP-I65W
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  Mike Caplinger
+
+AeroTech_I65.rse
+    Manufacturer: AeroTech
+    Designation:  I65W
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+AeroTech_I65.txt
+    Manufacturer: AeroTech
+    Designation:  I65W
+    Data Format:  CompuRoc
+    Data Source:  cert
+    Contributor:  John Coker
+
+AeroTech_I65_1.eng
+    Manufacturer: AeroTech
+    Designation:  I65W
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  John Coker
+
+AeroTech_J125.edx
+    Manufacturer: AeroTech
+    Designation:  J125W
+    Data Format:  ALT4
+    Data Source:  cert
+    Contributor:  John Coker
+
+AeroTech_J125.eng
+    Manufacturer: AeroTech
+    Designation:  J125W
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  John Coker
+
+AeroTech_J125.rse
+    Manufacturer: AeroTech
+    Designation:  J125W
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+AeroTech_J125.txt
+    Manufacturer: AeroTech
+    Designation:  J125W
+    Data Format:  CompuRoc
+    Data Source:  cert
+    Contributor:  John Coker
+
+AeroTech_J250.eng
+    Manufacturer: AeroTech
+    Designation:  J250W
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+AeroTech_J270.eng
+    Manufacturer: AeroTech
+    Designation:  HP-J270W
+    Data Format:  RASP
+    Data Source:  mfr
+    Contributor:  Mark Koelsch
+
+AeroTech_J425.eng
+    Manufacturer: AeroTech
+    Designation:  HP-J425R
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  Mike Caplinger
+
+AeroTech_J435.eng
+    Manufacturer: AeroTech
+    Designation:  J435 Super White Thunder DMS
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+AeroTech_J435.rse
+    Manufacturer: AeroTech
+    Designation:  J435 Super White Thunder DMS
+    Data Format:  RockSim
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+AeroTech_J450.eng
+    Manufacturer: AeroTech
+    Designation:  J450DM
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+AeroTech_K1050.edx
+    Manufacturer: AeroTech
+    Designation:  K1050W-SU
+    Data Format:  ALT4
+    Data Source:  cert
+    Contributor:  John Coker
+
+AeroTech_K1050.eng
+    Manufacturer: AeroTech
+    Designation:  K1050W-SU
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  John Coker
+
+AeroTech_K1050.rse
+    Manufacturer: AeroTech
+    Designation:  K1050W-SU
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+AeroTech_K1050.txt
+    Manufacturer: AeroTech
+    Designation:  K1050W-SU
+    Data Format:  CompuRoc
+    Data Source:  cert
+    Contributor:  John Coker
+
+AeroTech_K250.edx
+    Manufacturer: AeroTech
+    Designation:  K250W
+    Data Format:  ALT4
+    Data Source:  cert
+    Contributor:  John Coker
+
+AeroTech_K250.eng
+    Manufacturer: AeroTech
+    Designation:  K250W
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  John Coker
+
+AeroTech_K250.rse
+    Manufacturer: AeroTech
+    Designation:  K250W
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+AeroTech_K250.txt
+    Manufacturer: AeroTech
+    Designation:  K250W
+    Data Format:  CompuRoc
+    Data Source:  cert
+    Contributor:  John Coker
+
+AeroTech_K400.eng
+    Manufacturer: AeroTech
+    Designation:  K400C
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+AeroTech_K535.eng
+    Manufacturer: AeroTech
+    Designation:  HP-K535W
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  Mike Caplinger
+
+AeroTech_K850.eng
+    Manufacturer: AeroTech
+    Designation:  K850DM
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+AeroTech_L1000.eng
+    Manufacturer: AeroTech
+    Designation:  HP-L1000W
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  Mike Caplinger
+
+AeroTech_L875.eng
+    Manufacturer: AeroTech
+    Designation:  L875DM
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+AeroTech_M1340.eng
+    Manufacturer: AeroTech
+    Designation:  M1340W
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+AeroTech_M1350.eng
+    Manufacturer: AeroTech
+    Designation:  M1350W
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+Apogee_1_2A2.eng
+    Manufacturer: Apogee Components
+    Designation:  1/2A2
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+Apogee_1_2A2.rse
+    Manufacturer: Apogee Components
+    Designation:  1/2A2
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Apogee_1_4A2.eng
+    Manufacturer: Apogee Components
+    Designation:  1/4A2
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+Apogee_1_4A2.rse
+    Manufacturer: Apogee Components
+    Designation:  1/4A2
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Apogee_A2.eng
+    Manufacturer: Apogee Components
+    Designation:  A2
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+Apogee_A2.rse
+    Manufacturer: Apogee Components
+    Designation:  A2
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Apogee_B2.eng
+    Manufacturer: Apogee Components
+    Designation:  B2
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+Apogee_B2.rse
+    Manufacturer: Apogee Components
+    Designation:  B2
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Apogee_B7.eng
+    Manufacturer: Apogee Components
+    Designation:  B7
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+Apogee_B7.rse
+    Manufacturer: Apogee Components
+    Designation:  B7
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Apogee_C10.eng
+    Manufacturer: Apogee Components
+    Designation:  C10
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+Apogee_C10.rse
+    Manufacturer: Apogee Components
+    Designation:  C10
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Apogee_C4.eng
+    Manufacturer: Apogee Components
+    Designation:  C4
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+Apogee_C4.rse
+    Manufacturer: Apogee Components
+    Designation:  C4
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Apogee_C6.eng
+    Manufacturer: Apogee Components
+    Designation:  C6
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+Apogee_C6.rse
+    Manufacturer: Apogee Components
+    Designation:  C6
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Apogee_D10.eng
+    Manufacturer: Apogee Components
+    Designation:  D10
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+Apogee_D10.rse
+    Manufacturer: Apogee Components
+    Designation:  D10
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Apogee_D3.eng
+    Manufacturer: Apogee Components
+    Designation:  D3
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+Apogee_D3.rse
+    Manufacturer: Apogee Components
+    Designation:  D3
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Apogee_E6.eng
+    Manufacturer: Apogee Components
+    Designation:  E6
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+Apogee_E6.rse
+    Manufacturer: Apogee Components
+    Designation:  E6
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Apogee_F10.eng
+    Manufacturer: Apogee Components
+    Designation:  F10
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+Apogee_F10.rse
+    Manufacturer: Apogee Components
+    Designation:  F10
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Cesaroni_O25000.eng
+    Manufacturer: Cesaroni Technology
+    Designation:  30795O25000-P
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Andre Choquette
+
+Cesaroni_O25000.rse
+    Manufacturer: Cesaroni Technology
+    Designation:  30795O25000-P
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  Andre Choquette
+
+Ellis_E12.eng
+    Manufacturer: Ellis Mountain
+    Designation:  E12
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+Ellis_F23.eng
+    Manufacturer: Ellis Mountain
+    Designation:  F23
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+Ellis_G20.eng
+    Manufacturer: Ellis Mountain
+    Designation:  G20
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+Ellis_G20.rse
+    Manufacturer: Ellis Mountain
+    Designation:  G20
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Ellis_G35.eng
+    Manufacturer: Ellis Mountain
+    Designation:  G35
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+Ellis_G35.rse
+    Manufacturer: Ellis Mountain
+    Designation:  G35
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Ellis_G37.eng
+    Manufacturer: Ellis Mountain
+    Designation:  G37
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+Ellis_G37.rse
+    Manufacturer: Ellis Mountain
+    Designation:  G37
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Ellis_H275.eng
+    Manufacturer: Ellis Mountain
+    Designation:  H275
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+Ellis_H275.rse
+    Manufacturer: Ellis Mountain
+    Designation:  H275
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Ellis_H48.eng
+    Manufacturer: Ellis Mountain
+    Designation:  H48
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+Ellis_H48.rse
+    Manufacturer: Ellis Mountain
+    Designation:  H48
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Ellis_H50.eng
+    Manufacturer: Ellis Mountain
+    Designation:  H50
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+Ellis_H50.rse
+    Manufacturer: Ellis Mountain
+    Designation:  H50
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Ellis_I130.eng
+    Manufacturer: Ellis Mountain
+    Designation:  I130
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+Ellis_I130.rse
+    Manufacturer: Ellis Mountain
+    Designation:  I130
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Ellis_I134.eng
+    Manufacturer: Ellis Mountain
+    Designation:  I134
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+Ellis_I134.rse
+    Manufacturer: Ellis Mountain
+    Designation:  I134
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Ellis_I69.eng
+    Manufacturer: Ellis Mountain
+    Designation:  I69
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+Ellis_I69.rse
+    Manufacturer: Ellis Mountain
+    Designation:  I69
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Ellis_J110.eng
+    Manufacturer: Ellis Mountain
+    Designation:  J110
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+Ellis_J110.rse
+    Manufacturer: Ellis Mountain
+    Designation:  J110
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Ellis_J228.eng
+    Manufacturer: Ellis Mountain
+    Designation:  J228
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+Ellis_J228.rse
+    Manufacturer: Ellis Mountain
+    Designation:  J228
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Estes_1_2A3.eng
+    Manufacturer: Estes Industries
+    Designation:  1/2A3
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+Estes_1_2A3.rse
+    Manufacturer: Estes Industries
+    Designation:  1/2A3
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Estes_1_2A6.eng
+    Manufacturer: Estes Industries
+    Designation:  1/2A6
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+Estes_1_2A6.rse
+    Manufacturer: Estes Industries
+    Designation:  1/2A6
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Estes_1_4A3.eng
+    Manufacturer: Estes Industries
+    Designation:  1/4A3
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+Estes_1_4A3.rse
+    Manufacturer: Estes Industries
+    Designation:  1/4A3
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Estes_A10.eng
+    Manufacturer: Estes Industries
+    Designation:  A10
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+Estes_A10.rse
+    Manufacturer: Estes Industries
+    Designation:  A10
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Estes_A3.eng
+    Manufacturer: Estes Industries
+    Designation:  A3
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+Estes_A3.rse
+    Manufacturer: Estes Industries
+    Designation:  A3
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Estes_A8.eng
+    Manufacturer: Estes Industries
+    Designation:  A8
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  John Coker
+
+Estes_A8.rse
+    Manufacturer: Estes Industries
+    Designation:  A8
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Estes_A8_1.eng
+    Manufacturer: Estes Industries
+    Designation:  A8
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  John Coker
+
+Estes_B4.eng
+    Manufacturer: Estes Industries
+    Designation:  B4
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  Nicholas Domansky
+
+Estes_B4.rse
+    Manufacturer: Estes Industries
+    Designation:  B4
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Estes_B4_1.eng
+    Manufacturer: Estes Industries
+    Designation:  B4
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+Estes_B6.eng
+    Manufacturer: Estes Industries
+    Designation:  B6
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+Estes_B6.rse
+    Manufacturer: Estes Industries
+    Designation:  B6
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Estes_C11.eng
+    Manufacturer: Estes Industries
+    Designation:  C11
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+Estes_C11.rse
+    Manufacturer: Estes Industries
+    Designation:  C11
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Estes_C5.eng
+    Manufacturer: Estes Industries
+    Designation:  C5
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+Estes_C5.rse
+    Manufacturer: Estes Industries
+    Designation:  C5
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Estes_C6.eng
+    Manufacturer: Estes Industries
+    Designation:  C6
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  Nicholas Domansky
+
+Estes_C6.rse
+    Manufacturer: Estes Industries
+    Designation:  C6
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Estes_C6_1.eng
+    Manufacturer: Estes Industries
+    Designation:  C6
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+Estes_D11.eng
+    Manufacturer: Estes Industries
+    Designation:  D11
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+Estes_D11.rse
+    Manufacturer: Estes Industries
+    Designation:  D11
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Estes_D12.eng
+    Manufacturer: Estes Industries
+    Designation:  D12
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+Estes_D12.rse
+    Manufacturer: Estes Industries
+    Designation:  D12
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Estes_E12.eng
+    Manufacturer: Estes Industries
+    Designation:  E12
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  John Coker
+
+Estes_E16.eng
+    Manufacturer: Estes Industries
+    Designation:  E16
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  John Coker
+
+Estes_E30.eng
+    Manufacturer: Estes Industries
+    Designation:  E30
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  David Moore
+
+Estes_E9.eng
+    Manufacturer: Estes Industries
+    Designation:  E9
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+Estes_E9.rse
+    Manufacturer: Estes Industries
+    Designation:  E9
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Estes_F15.eng
+    Manufacturer: Estes Industries
+    Designation:  F15
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  John Coker
+
+Estes_F15_1.eng
+    Manufacturer: Estes Industries
+    Designation:  F15
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Howard Smart
+
+Estes_F50.eng
+    Manufacturer: Estes Industries
+    Designation:  F50
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  David Moore
+
+Estes_G40.eng
+    Manufacturer: Estes Industries
+    Designation:  G40
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  David Moore
+
+Estes_G40_1.eng
+    Manufacturer: Estes Industries
+    Designation:  G40
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  David Moore
+
+PML_F50.eng
+    Manufacturer: Public Missiles, Ltd.
+    Designation:  F50T
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+PML_G40.eng
+    Manufacturer: Public Missiles, Ltd.
+    Designation:  G40W
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+PML_G80.eng
+    Manufacturer: Public Missiles, Ltd.
+    Designation:  G80T
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+Quest_A3.eng
+    Manufacturer: Quest Aerospace
+    Designation:  A3
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+Quest_A3.rse
+    Manufacturer: Quest Aerospace
+    Designation:  A3
+    Data Format:  RockSim
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+Quest_A3_1.eng
+    Manufacturer: Quest Aerospace
+    Designation:  A3T
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Howard Smart
+
+Quest_A6.eng
+    Manufacturer: Quest Aerospace
+    Designation:  A6
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+Quest_A6.rse
+    Manufacturer: Quest Aerospace
+    Designation:  A6
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Quest_A8.eng
+    Manufacturer: Quest Aerospace
+    Designation:  A8-3
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  John Coker
+
+Quest_B4.eng
+    Manufacturer: Quest Aerospace
+    Designation:  B4
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+Quest_B4.rse
+    Manufacturer: Quest Aerospace
+    Designation:  B4
+    Data Format:  RockSim
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+Quest_B4_1.eng
+    Manufacturer: Quest Aerospace
+    Designation:  B4-4
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  John Coker
+
+Quest_B6.eng
+    Manufacturer: Quest Aerospace
+    Designation:  B6
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+Quest_B6.rse
+    Manufacturer: Quest Aerospace
+    Designation:  B6
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Quest_C12.eng
+    Manufacturer: Quest Aerospace
+    Designation:  C12
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+Quest_C12.rse
+    Manufacturer: Quest Aerospace
+    Designation:  C12
+    Data Format:  RockSim
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+Quest_C6.eng
+    Manufacturer: Quest Aerospace
+    Designation:  C6
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+Quest_C6.rse
+    Manufacturer: Quest Aerospace
+    Designation:  C6
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Quest_D16.eng
+    Manufacturer: Quest Aerospace
+    Designation:  D16
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+Quest_D16.rse
+    Manufacturer: Quest Aerospace
+    Designation:  D16
+    Data Format:  RockSim
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+Quest_D5.eng
+    Manufacturer: Quest Aerospace
+    Designation:  D5
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  John Coker
+
+Quest_D5_1.eng
+    Manufacturer: Quest Aerospace
+    Designation:  D5
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+Quest_D5_2.eng
+    Manufacturer: Quest Aerospace
+    Designation:  D5-P
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+Quest_D8.eng
+    Manufacturer: Quest Aerospace
+    Designation:  D8
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  John Coker
+
+Quest_Micro_Maxx.eng
+    Manufacturer: Quest Aerospace
+    Designation:  Micro Maxx II
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  John Coker
+
+Quest_Micro_Maxx.rse
+    Manufacturer: Quest Aerospace
+    Designation:  Micro Maxx
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Quest_Micro_Maxx_1.eng
+    Manufacturer: Quest Aerospace
+    Designation:  Micro Maxx
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  John Coker
+
+Quest_Micro_Maxx_1.rse
+    Manufacturer: Quest Aerospace
+    Designation:  Micro Maxx II
+    Data Format:  RockSim
+    Data Source:  user
+    Contributor:  John Coker
+
+Quest_Micro_Maxx_2.eng
+    Manufacturer: Quest Aerospace
+    Designation:  Micro Maxx II
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  Bernard Cawley
+
+RV_E15.eng
+    Manufacturer: Rocketvision Flight-Star
+    Designation:  E15
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  John Coker
+
+RV_F32.eng
+    Manufacturer: Rocketvision Flight-Star
+    Designation:  F32
+    Data Format:  RASP
+    Data Source:  user
+    Contributor:  John Coker
+
+RV_F72.eng
+    Manufacturer: Rocketvision Flight-Star
+    Designation:  F72
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+RV_G55.eng
+    Manufacturer: Rocketvision Flight-Star
+    Designation:  G55
+    Data Format:  RASP
+    Data Source:  cert
+    Contributor:  Mark Koelsch
+
+Roadrunner_E25.eng
+    Manufacturer: Roadrunner Rocketry
+    Designation:  E25
+    Data Format:  RASP
+    Data Source:  mfr
+    Contributor:  Roadrunner Rocketry
+
+Roadrunner_E25.rse
+    Manufacturer: Roadrunner Rocketry
+    Designation:  E25
+    Data Format:  RockSim
+    Data Source:  mfr
+    Contributor:  Roadrunner Rocketry
+
+Roadrunner_F35.eng
+    Manufacturer: Roadrunner Rocketry
+    Designation:  F35
+    Data Format:  RASP
+    Data Source:  mfr
+    Contributor:  Roadrunner Rocketry
+
+Roadrunner_F35.rse
+    Manufacturer: Roadrunner Rocketry
+    Designation:  F35
+    Data Format:  RockSim
+    Data Source:  mfr
+    Contributor:  Roadrunner Rocketry
+
+Roadrunner_F45.eng
+    Manufacturer: Roadrunner Rocketry
+    Designation:  F45
+    Data Format:  RASP
+    Data Source:  mfr
+    Contributor:  Roadrunner Rocketry
+
+Roadrunner_F45.rse
+    Manufacturer: Roadrunner Rocketry
+    Designation:  F45
+    Data Format:  RockSim
+    Data Source:  mfr
+    Contributor:  Roadrunner Rocketry
+
+Roadrunner_F60.eng
+    Manufacturer: Roadrunner Rocketry
+    Designation:  F60
+    Data Format:  RASP
+    Data Source:  mfr
+    Contributor:  Roadrunner Rocketry
+
+Roadrunner_F60.rse
+    Manufacturer: Roadrunner Rocketry
+    Designation:  F60
+    Data Format:  RockSim
+    Data Source:  mfr
+    Contributor:  Roadrunner Rocketry
+
+Roadrunner_G80.eng
+    Manufacturer: Roadrunner Rocketry
+    Designation:  G80
+    Data Format:  RASP
+    Data Source:  mfr
+    Contributor:  Roadrunner Rocketry
+
+Roadrunner_G80.rse
+    Manufacturer: Roadrunner Rocketry
+    Designation:  G80
+    Data Format:  RockSim
+    Data Source:  mfr
+    Contributor:  Roadrunner Rocketry
+
+SCR_A3.rse
+    Manufacturer: Southern Cross Rocketry
+    Designation:  SCR-A8
+    Data Format:  RockSim
+    Data Source:  mfr
+    Contributor:  John Coker
+
+SCR_B4.rse
+    Manufacturer: Southern Cross Rocketry
+    Designation:  SCR-B6
+    Data Format:  RockSim
+    Data Source:  mfr
+    Contributor:  John Coker
+
+SCR_C3.rse
+    Manufacturer: Southern Cross Rocketry
+    Designation:  SCR-C6
+    Data Format:  RockSim
+    Data Source:  mfr
+    Contributor:  John Coker

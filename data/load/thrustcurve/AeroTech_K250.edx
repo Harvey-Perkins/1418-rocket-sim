@@ -1,0 +1,38 @@
+00  MRev 01......:
+01  Designation..: K250W
+02  Data date....: 04/19/98
+03  Manufacturer.: AeroTech
+04  Cost.........:
+05  Grain type...:
+06  Propellant ID:
+07  O.D..........: 2.125
+08  Case Len.....: 26.5
+09  Wgt Units....: G
+10  Specs........: T
+11  Wt Prop. gms.: 1529.0
+12  Load Wt. gms.: 2211.3
+13  Burn time....: 10.401
+14  Favg Lbs.....: 63.6532
+15  Favg Newtons.: 283.143
+16  TotImp Lbsecs: 579.642
+17  TotImp Ntsecs: 2578.375
+18  REM1.........: converted from TMT test stand data 1998 (www.tripoli.org)
+19  REM2.........: provided by ThrustCurve.org (www.thrustcurve.org)
+20  Time /Thrust.: 0.38     86.309
+20  Time /Thrust.: 1.15     92.935
+20  Time /Thrust.: 1.92     92.333
+20  Time /Thrust.: 2.69     92.568
+20  Time /Thrust.: 3.47     87.859
+20  Time /Thrust.: 4.24     78.153
+20  Time /Thrust.: 5.01     68.840
+20  Time /Thrust.: 5.78     56.753
+20  Time /Thrust.: 6.55     42.628
+20  Time /Thrust.: 7.32     28.413
+20  Time /Thrust.: 8.09     17.220
+20  Time /Thrust.: 8.86      9.535
+20  Time /Thrust.: 9.63      2.174
+20  Time /Thrust.: 10.40      0.000
+61  Mass Fraction: 0.691
+62  Isp lb/s/lb..: 169.834
+63  Rating.......: 2578-K-283
+64  Pct Full.....: 0% L
