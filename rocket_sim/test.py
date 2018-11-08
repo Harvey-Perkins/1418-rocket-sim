@@ -2,6 +2,11 @@
 This isn't permenant, just a demo of the velocity verlet and how it can calculate velocity and position from a acceleration vector.
 In this case, it just simulates dropping an object from a certain height.
 I think we will sum forces on the rocket, use the fact that F=MA to calculate the acceleration vector, then run that through the verlet.
+
+Some thoughts on structure:
+The simulated rocket is an object, with every part on it as something else, maybe another object?
+All the parts should have modules for what they do. For example, the engines should have a mass and a thrust module
+Probably we should use classes for most of this.
 '''
 
 import numpy as np

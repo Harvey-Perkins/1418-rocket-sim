@@ -26,4 +26,9 @@ def converteng(file):
 
     return curve
 
+def convertrse(file):
+    #returns list of lists
+    #use xml parser for this
+    return
+
 print(converteng(file))
