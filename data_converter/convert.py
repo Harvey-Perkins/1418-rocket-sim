@@ -19,12 +19,10 @@ def converteng(file):
     for line in file:
         if line[0].isalpha():
             continue
-        print(line)
+        pair = [0,0]
         pair[0] = line.split()[0]
         pair[1] = line.split()[1]
-        print(pair)
         curve.append(pair)
-        print(curve) #Why won't this work?
 
     return curve
 
