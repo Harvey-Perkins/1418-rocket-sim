@@ -4,6 +4,8 @@ Converts RASP (.eng), RockSim (.rse), CompuRoc (.txt), and ALT4 (.edx) formats t
 import os
 import xml.etree.ElementTree as ET
 
+'''
+This is for testing
 script_dir = os.path.dirname(__file__)
 #rel_path = "../data/load/thrustcurve/AeroTech_D10.eng"
 #rel_path = "../data/load/thrustcurve/AeroTech_D21.rse"
@@ -11,21 +13,8 @@ script_dir = os.path.dirname(__file__)
 #rel_path = "../data/load/thrustcurve/AeroTech_H45.txt"
 rel_path = "../data/load/thrustcurve/"
 abs_path = os.path.join(script_dir, rel_path) #connects the path of where the file is being run, __file__, with the relative path of the data
-
-def main():
-    for filename in os.listdir(abs_path):
-        file = open(os.path.join(abs_path, filename), "r")
-        print(file.name.rsplit("/",1)[1]) #debug
-        if file.name.rsplit("/", 1)[1] == "00INDEX.txt": #Ignores index
-            continue
-        elif file.name.rsplit(".", 1)[1] == "eng": #detects file extension
-            print(converteng(file))
-        elif file.name.rsplit(".", 1)[1] == "rse":
-            print(convertrse(file))
-        elif file.name.rsplit(".", 1)[1] == "edx":
-            print(convertedx(file))
-        elif file.name.rsplit(".", 1)[1] == "txt":
-            print(convertcompuroc(file))
+file = open(abs_path)
+'''
 
 
 def converteng(file):
@@ -84,5 +73,3 @@ def convertcompuroc(file):
         curve.append(pair)
 
     return curve
-
-main()
