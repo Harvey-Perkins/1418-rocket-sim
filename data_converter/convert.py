@@ -8,19 +8,34 @@ script_dir = os.path.dirname(__file__)
 #rel_path = "../data/load/thrustcurve/AeroTech_D10.eng"
 #rel_path = "../data/load/thrustcurve/AeroTech_D21.rse"
 #rel_path = "../data/load/thrustcurve/AeroTech_H45.edx"
-rel_path = "../data/load/thrustcurve/AeroTech_H45.txt"
-abs_path = os.path.join(script_dir, rel_path)
+#rel_path = "../data/load/thrustcurve/AeroTech_H45.txt"
+rel_path = "../data/load/thrustcurve/"
+abs_path = os.path.join(script_dir, rel_path) #connects the path of where the file is being run, __file__, with the relative path of the data
 
-file = open(abs_path, "r")
-#print(file.read())
+def main():
+    for filename in os.listdir(abs_path):
+        file = open(os.path.join(abs_path, filename), "r")
+        print(file.name.rsplit("/",1)[1]) #debug
+        if file.name.rsplit("/", 1)[1] == "00INDEX.txt": #Ignores index
+            continue
+        elif file.name.rsplit(".", 1)[1] == "eng": #detects file extension
+            print(converteng(file))
+        elif file.name.rsplit(".", 1)[1] == "rse":
+            print(convertrse(file))
+        elif file.name.rsplit(".", 1)[1] == "edx":
+            print(convertedx(file))
+        elif file.name.rsplit(".", 1)[1] == "txt":
+            print(convertcompuroc(file))
+
 
 def converteng(file):
     #Returns list of lists
     pair = [0,0]
     curve = []
     for line in file:
-        if line[0].isalpha():
+        if len(line.split()) > 2 or line[0] == ";": #checks if the line has more than one space, or is just a ;
             continue
+
         pair = [0,0]
         pair[0] = float(line.split()[0])
         pair[1] = float(line.split()[1])
@@ -34,10 +49,10 @@ def convertrse(file):
     curve = []
     tree = ET.parse(file)
     root = tree.getroot()
-    for child in root[0][0][1]:
+    for child in root[0][0].find("data"): #Searches for <data>
         pair = [0,0]
-        pair[0] = float(child.attrib["t"])
-        pair[1] = float(child.attrib["f"])
+        pair[0] = float(child.attrib["t"]) #time
+        pair[1] = float(child.attrib["f"]) #thrust
         curve.append(pair)
     return curve
 
@@ -62,7 +77,7 @@ def convertcompuroc(file):
     curve = []
     for line in file:
         pair = [0,0]
-        if line[0].isalpha() or line[0] == ";" or line[0] == "-":
+        if line[0].isalpha() or line[0] == ";" or line[0] == "-": #checks that the line starts with a number, isn't a ;, and isn't negative
             continue
         pair[0] = float(line.split()[0])
         pair[1] = float(line.split()[1])
@@ -70,4 +85,4 @@ def convertcompuroc(file):
 
     return curve
 
-print(convertcompuroc(file))
+main()
