@@ -25,15 +25,14 @@ file = open(abs_path)
 data = convert.converteng(file) #test
 #data = convert.convertrse(file) #test
 #data = convert.convertedx(file) #test
-#data = convert.convertcompuroc(file) #This is the only one that doesn't work
+#data = convert.convertcompuroc(file) #This is the only one that doesn't work with bezier
 
+#converts from list of x y pairs to list of x and list of y coords
 for pair in data:
-    #print(pair)
     xs.append(pair[0])
-
-for pair in data:
     ys.append(pair[1])
 
+#graphs the raw data
 plt.plot(xs, ys)
 #plt.show()
 
