@@ -1,0 +1,38 @@
+00  MRev 01......:
+01  Designation..: K1050W
+02  Data date....: 04/18/98
+03  Manufacturer.: AeroTech
+04  Cost.........:
+05  Grain type...:
+06  Propellant ID:
+07  O.D..........: 2.125
+08  Case Len.....: 26.625
+09  Wgt Units....: G
+10  Specs........: T
+11  Wt Prop. gms.: 1347.1
+12  Load Wt. gms.: 2128.4
+13  Burn time....: 2.595
+14  Favg Lbs.....: 250.169
+15  Favg Newtons.: 1112.807
+16  TotImp Lbsecs: 568.612
+17  TotImp Ntsecs: 2529.311
+18  REM1.........: converted from TMT test stand data 1998 (www.tripoli.org)
+19  REM2.........: provided by ThrustCurve.org (www.thrustcurve.org)
+20  Time /Thrust.: 0.09    290.460
+20  Time /Thrust.: 0.29    292.544
+20  Time /Thrust.: 0.48    303.714
+20  Time /Thrust.: 0.67    306.198
+20  Time /Thrust.: 0.86    310.044
+20  Time /Thrust.: 1.06    300.987
+20  Time /Thrust.: 1.25    277.092
+20  Time /Thrust.: 1.44    260.206
+20  Time /Thrust.: 1.63    248.269
+20  Time /Thrust.: 1.82    209.121
+20  Time /Thrust.: 2.02    114.139
+20  Time /Thrust.: 2.21     48.582
+20  Time /Thrust.: 2.40     10.549
+20  Time /Thrust.: 2.59      0.000
+61  Mass Fraction: 0.633
+62  Isp lb/s/lb..: 189.096
+63  Rating.......: 2529-K-1113
+64  Pct Full.....: 97% K

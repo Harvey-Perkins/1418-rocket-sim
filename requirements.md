@@ -1,6 +1,9 @@
 # Requirements
 * Python 3.7 or higher - [Website](https://www.python.org/)
 * NumPy 1.15.4 or higher - [Website](http://www.numpy.org/)
+* MatPlotLib 3.0.0 or higher - [Website](https://matplotlib.org/)
+* Bezier 0.9.0 or higher - [Website](https://pypi.org/project/bezier/)
+* SciPy Library - [Website](https://www.scipy.org/)
 
 ## Recommended
 Install the entire set of SciPy packages with pip using the command

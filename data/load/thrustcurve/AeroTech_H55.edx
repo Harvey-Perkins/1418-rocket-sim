@@ -1,0 +1,38 @@
+00  MRev 01......:
+01  Designation..: H55W
+02  Data date....: 10/10/98
+03  Manufacturer.: AeroTech
+04  Cost.........:
+05  Grain type...:
+06  Propellant ID:
+07  O.D..........: 1.125
+08  Case Len.....: 7.5
+09  Wgt Units....: G
+10  Specs........: T
+11  Wt Prop. gms.: 98.6
+12  Load Wt. gms.: 188.2
+13  Burn time....: 2.796
+14  Favg Lbs.....: 14.9109
+15  Favg Newtons.: 66.327
+16  TotImp Lbsecs: 36.5317
+17  TotImp Ntsecs: 162.501
+18  REM1.........: converted from TMT test stand data 1998 (www.tripoli.org)
+19  REM2.........: provided by ThrustCurve.org (www.thrustcurve.org)
+20  Time /Thrust.: 0.10     21.448
+20  Time /Thrust.: 0.31     21.566
+20  Time /Thrust.: 0.52     21.822
+20  Time /Thrust.: 0.72     21.482
+20  Time /Thrust.: 0.93     20.538
+20  Time /Thrust.: 1.14     19.474
+20  Time /Thrust.: 1.34     17.945
+20  Time /Thrust.: 1.55     14.521
+20  Time /Thrust.: 1.76      7.942
+20  Time /Thrust.: 1.97      4.793
+20  Time /Thrust.: 2.17      3.158
+20  Time /Thrust.: 2.38      1.970
+20  Time /Thrust.: 2.59      1.072
+20  Time /Thrust.: 2.80      0.000
+61  Mass Fraction: 0.524
+62  Isp lb/s/lb..: 166.053
+63  Rating.......: 163-H-66
+64  Pct Full.....: 1% H

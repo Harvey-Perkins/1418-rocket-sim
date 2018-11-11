@@ -1,0 +1,38 @@
+00  MRev 01......:
+01  Designation..: I132W
+02  Data date....: 04/19/98
+03  Manufacturer.: AeroTech
+04  Cost.........:
+05  Grain type...:
+06  Propellant ID:
+07  O.D..........: 1.5
+08  Case Len.....: 13.188
+09  Wgt Units....: G
+10  Specs........: T
+11  Wt Prop. gms.: 365.6
+12  Load Wt. gms.: 512.1
+13  Burn time....: 4.773
+14  Favg Lbs.....: 28.4528
+15  Favg Newtons.: 126.564
+16  TotImp Lbsecs: 135.803
+17  TotImp Ntsecs: 604.082
+18  REM1.........: converted from TMT test stand data 1998 (www.tripoli.org)
+19  REM2.........: provided by ThrustCurve.org (www.thrustcurve.org)
+20  Time /Thrust.: 0.19     42.697
+20  Time /Thrust.: 0.56     38.192
+20  Time /Thrust.: 0.93     38.969
+20  Time /Thrust.: 1.31     39.231
+20  Time /Thrust.: 1.68     39.105
+20  Time /Thrust.: 2.06     37.964
+20  Time /Thrust.: 2.43     35.362
+20  Time /Thrust.: 2.81     31.224
+20  Time /Thrust.: 3.18     24.793
+20  Time /Thrust.: 3.55     17.080
+20  Time /Thrust.: 3.93     10.381
+20  Time /Thrust.: 4.30      5.741
+20  Time /Thrust.: 4.68      2.556
+20  Time /Thrust.: 4.77      0.000
+61  Mass Fraction: 0.714
+62  Isp lb/s/lb..: 166.425
+63  Rating.......: 604-I-127
+64  Pct Full.....: 88% I

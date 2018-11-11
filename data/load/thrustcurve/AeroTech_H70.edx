@@ -1,0 +1,38 @@
+00  MRev 01......:
+01  Designation..: H70W
+02  Data date....: 10/11/97
+03  Manufacturer.: AeroTech
+04  Cost.........:
+05  Grain type...:
+06  Propellant ID:
+07  O.D..........: 1.125
+08  Case Len.....: 9
+09  Wgt Units....: G
+10  Specs........: T
+11  Wt Prop. gms.: 116.5
+12  Load Wt. gms.: 224.0
+13  Burn time....: 2.956
+14  Favg Lbs.....: 19.1559
+15  Favg Newtons.: 85.210
+16  TotImp Lbsecs: 49.6058
+17  TotImp Ntsecs: 220.658
+18  REM1.........: converted from TMT test stand data 1997 (www.tripoli.org)
+19  REM2.........: provided by ThrustCurve.org (www.thrustcurve.org)
+20  Time /Thrust.: 0.11     27.661
+20  Time /Thrust.: 0.33     28.512
+20  Time /Thrust.: 0.55     28.521
+20  Time /Thrust.: 0.76     27.963
+20  Time /Thrust.: 0.98     26.565
+20  Time /Thrust.: 1.20     24.325
+20  Time /Thrust.: 1.42     21.477
+20  Time /Thrust.: 1.64     17.201
+20  Time /Thrust.: 1.86     11.350
+20  Time /Thrust.: 2.08      6.770
+20  Time /Thrust.: 2.30      4.104
+20  Time /Thrust.: 2.52      2.426
+20  Time /Thrust.: 2.74      1.257
+20  Time /Thrust.: 2.96      0.000
+61  Mass Fraction: 0.520
+62  Isp lb/s/lb..: 190.792
+63  Rating.......: 221-H-85
+64  Pct Full.....: 37% H

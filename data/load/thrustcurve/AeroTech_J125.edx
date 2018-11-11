@@ -1,0 +1,38 @@
+00  MRev 01......:
+01  Designation..: J125
+02  Data date....: 07/27/97
+03  Manufacturer.: AeroTech
+04  Cost.........:
+05  Grain type...:
+06  Propellant ID:
+07  O.D..........: 2.125
+08  Case Len.....: 14.5
+09  Wgt Units....: G
+10  Specs........: T
+11  Wt Prop. gms.: 633.9
+12  Load Wt. gms.: 1288.0
+13  Burn time....: 9.138
+14  Favg Lbs.....: 34.0117
+15  Favg Newtons.: 151.292
+16  TotImp Lbsecs: 272.093
+17  TotImp Ntsecs: 1210.330
+18  REM1.........: converted from TMT test stand data 1997 (www.tripoli.org)
+19  REM2.........: provided by ThrustCurve.org (www.thrustcurve.org)
+20  Time /Thrust.: 0.34     53.587
+20  Time /Thrust.: 1.01     62.808
+20  Time /Thrust.: 1.69     61.859
+20  Time /Thrust.: 2.37     53.850
+20  Time /Thrust.: 3.04     45.362
+20  Time /Thrust.: 3.72     37.187
+20  Time /Thrust.: 4.40     28.678
+20  Time /Thrust.: 5.08     21.107
+20  Time /Thrust.: 5.75     14.880
+20  Time /Thrust.: 6.43     10.453
+20  Time /Thrust.: 7.11      7.626
+20  Time /Thrust.: 7.78      5.496
+20  Time /Thrust.: 8.46      3.715
+20  Time /Thrust.: 9.14      0.000
+61  Mass Fraction: 0.492
+62  Isp lb/s/lb..: 192.292
+63  Rating.......: 1210-J-151
+64  Pct Full.....: 89% J
