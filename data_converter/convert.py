@@ -1,5 +1,5 @@
 '''
-Converts RASP (.eng), RockSim (.rse), CompuRoc (.txt), and ALT4 (.edx) formats to... somthing. Not exactly sure what yet.
+Converts RASP (.eng), RockSim (.rse), CompuRoc (.txt), and ALT4 (.edx) formats to list of x y pair lists. 
 '''
 import os
 import xml.etree.ElementTree as ET
@@ -68,8 +68,10 @@ def convertcompuroc(file):
         pair = [0,0]
         if line[0].isalpha() or line[0] == ";" or line[0] == "-": #checks that the line starts with a number, isn't a ;, and isn't negative
             continue
-        pair[0] = float(line.split()[0])
-        pair[1] = float(line.split()[1])
+        if float(line.split()[1]) == 0: #removes lines with zero thrust
+            continue
+        pair[0] = float(line.split()[0]) #time
+        pair[1] = float(line.split()[1]) #thrust
         curve.append(pair)
 
     return curve
