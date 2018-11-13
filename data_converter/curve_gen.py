@@ -16,15 +16,15 @@ Takes a file and creates pretty graphs of it with both cubic interpolation and b
 script_dir = os.path.dirname(__file__)
 #rel_path = "../data/load/thrustcurve/AeroTech_D10.eng"
 #rel_path = "../data/load/thrustcurve/AeroTech_D21.rse"
-#rel_path = "../data/load/thrustcurve/AeroTech_H45.edx"
-rel_path = "../data/load/thrustcurve/AeroTech_H125.txt" 
-abs_path = os.path.join(script_dir, rel_path) #connects the path of where the file is being run, __file__, with the relative path of the data'''
+rel_path = "../data/load/thrustcurve/AeroTech_H45.edx"
+#rel_path = "../data/load/thrustcurve/AeroTech_H125.txt"
+abs_path = os.path.join(script_dir, rel_path) #connects the path of where the file is being run, __file__, with the relative path of the data
 file = open(abs_path)
 
 #data = convert.converteng(file) #test
 #data = convert.convertrse(file) #test
-#data = convert.convertedx(file) #test
-data = convert.convertcompuroc(file) #This is the only one that doesn't work with bezier
+data = convert.convertedx(file) #test
+#data = convert.convertcompuroc(file) #This is the only one that doesn't work with bezier
 
 #converts from list of x y pairs to list of x and list of y coords
 for pair in data:
