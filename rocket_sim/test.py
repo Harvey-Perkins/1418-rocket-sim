@@ -26,6 +26,7 @@ while position[2] > 0:
 print(t)
 
 
+'''
 #some random rotation tests
 def rotation_matrix(axis, theta):
     #Returns rotation matrix describing counterclockwise rotation about the axis by theta radians
@@ -46,3 +47,4 @@ theta = math.radians(90) # original = 1.2
 
 print(np.dot(rotation_matrix(axis, theta), v))
 # [ 2.74911638  4.77180932  1.91629719]
+'''
