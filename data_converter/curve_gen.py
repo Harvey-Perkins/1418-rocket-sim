@@ -27,16 +27,33 @@ data = convert.convertedx(file) #test
 #data = convert.convertcompuroc(file) #This is the only one that doesn't work with bezier
 
 #converts from list of x y pairs to list of x and list of y coords
-for pair in data:
-    xs.append(pair[0])
-    ys.append(pair[1])
 
-#graphs the raw data
-plt.plot(xs, ys)
-#plt.show()
+def cubiccurve(data):
+    #takes output of convert.py
 
-cubic = CubicSpline(xs, ys, bc_type="natural")
+    for pair in data:
+        xs.append(pair[0])
+        ys.append(pair[1])
 
+    #graphs the raw data
+    plt.plot(xs, ys)
+    #plt.show()
+
+    cubic = CubicSpline(xs, ys, bc_type="natural")
+    return cubic
+
+def beziercurve(data):
+    #Takes ouput from convert.py
+    for pair in data:
+        xs.append(pair[0])
+        ys.append(pair[1])
+
+    nodes = np.asfortranarray([xs,ys])
+
+    curve1 = bezier.Curve.from_nodes(nodes)
+    return curve1
+
+'''
 #Cubic Spline graph
 for i in range(256):
     cubicx.append(i * xs[len(xs) - 1]/256)
@@ -46,9 +63,6 @@ plt.plot(cubicx, cubicy)
 #plt.show()
 
 #Bezier graph
-nodes = np.asfortranarray([xs,ys])
-
-curve1 = bezier.Curve.from_nodes(nodes)
-
 curve1.plot(num_pts=256)
 plt.show()
+'''

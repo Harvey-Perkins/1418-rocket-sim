@@ -5,7 +5,7 @@ NOTE: I am unsure of the units for thrust. Some may be lbs rather than N. Time s
 Having the first data point 0,0 makes the cubic spline generator go wonky. So this also removes any points that are
 
 TODO:
-    Check thrust units.
+    Check for 0 thrust or 0 time?
 '''
 import os
 import xml.etree.ElementTree as ET
@@ -45,7 +45,7 @@ def convertrse(file):
     root = tree.getroot()
     for child in root[0][0].find("data"): #Searches for <data>
         pair = [0,0]
-        if child.attrib["f"] == "0.":
+        if child.attrib["f"] == "0.": #thrust
             continue
         pair[0] = float(child.attrib["t"]) #time
         pair[1] = float(child.attrib["f"]) #thrust
@@ -76,7 +76,7 @@ def convertcompuroc(file):
         pair = [0,0]
         if line[0].isalpha() or line[0] == ";" or line[0] == "-": #checks that the line starts with a number, isn't a ;, and isn't negative
             continue
-        if float(line.split()[0]) == 0:
+        if float(line.split()[0]) == 0: #time
             continue
         pair[0] = float(line.split()[0]) #time
         pair[1] = float(line.split()[1]) #thrust
