@@ -27,7 +27,7 @@ class Engine:
         if self.curve(self.time_past_ignition) <= 0: #Is the thrust curve function returning negative numbers?
             self.thrust = 0 #That means the engine has burnt out
         else:
-            self.thrust = self.curve(self.time_past_ignition) #Otherwise, just use the thrust curve function
+            self.thrust = self.curve(self.time_past_ignition) #Otherwise, just use the thrust curve function to determine the thrust
         print("Thrust:")
         print(self.thrust)
 
