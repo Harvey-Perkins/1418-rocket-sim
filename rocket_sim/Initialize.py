@@ -5,7 +5,13 @@ It should either initialize all the variables and contain the main loop, or dire
 
 import module_engine as me
 
-engine1 = me.Engine(1234)
-print(engine1.i)
+#file_path = "../data/load/thrustcurve/AeroTech_D10.eng"
+#file_path = "../data/load/thrustcurve/AeroTech_D21.rse"
+#file_path = "../data/load/thrustcurve/AeroTech_H45.edx"
+file_path = "../data/load/thrustcurve/AeroTech_H125.txt"
+
+engine1 = me.Engine(file_path)
+
+print(engine1.curve)
 
 #Testing class stuff

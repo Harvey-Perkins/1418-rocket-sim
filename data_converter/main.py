@@ -1,11 +1,11 @@
-import convert
+from data_converter import convert
 import os
-import curve_gen
+from data_converter import curve_gen
 
 #file_path = "../data/load/thrustcurve/AeroTech_D10.eng"
 #file_path = "../data/load/thrustcurve/AeroTech_D21.rse"
 #file_path = "../data/load/thrustcurve/AeroTech_H45.edx"
-file_path = "../data/load/thrustcurve/AeroTech_H125.txt"
+#file_path = "../data/load/thrustcurve/AeroTech_H125.txt"
 
 
 def thrustcurve(rel_path):
@@ -28,4 +28,4 @@ def thrustcurve(rel_path):
     elif file.name.rsplit(".", 1)[1] == "txt":
         return curve_gen.cubiccurve(convert.convertcompuroc(file))
 
-thrustcurve(file_path) #debug
+#thrustcurve(file_path) #debug

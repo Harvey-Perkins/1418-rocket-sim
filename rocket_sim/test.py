@@ -12,6 +12,7 @@ Probably we should use classes for most of this.
 import numpy as np
 import scipy
 import math
+#               x,y,z
 g0 = np.array([0.0,0.0,-9.81])
 position = np.array([0.0,0.0,10.0])
 velocity = np.array([0.0,0.0,0.0])
