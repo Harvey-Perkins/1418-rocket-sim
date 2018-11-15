@@ -12,6 +12,23 @@ Probably we should use classes for most of this.
 import numpy as np
 import scipy
 import math
+import module_engine as me
+
+#file_path = "../data/load/thrustcurve/AeroTech_D10.eng"
+#file_path = "../data/load/thrustcurve/AeroTech_D21.rse"
+file_path = "../data/load/thrustcurve/AeroTech_H45.edx"
+file_path2 = "../data/load/thrustcurve/AeroTech_H125.txt"
+
+#Testing class stuff
+engine1 = me.Engine(file_path)
+engine2 = me.Engine(file_path2)
+
+engine1.ignite(0.01)
+print(engine1.ignition_delay)
+engine2.ignite(0.02)
+print(engine2.ignition_delay)
+
+#Simulates something falling 10 meters under gravity
 #               x,y,z
 g0 = np.array([0.0,0.0,-9.81])
 position = np.array([0.0,0.0,10.0])

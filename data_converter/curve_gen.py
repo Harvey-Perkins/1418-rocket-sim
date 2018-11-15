@@ -30,6 +30,8 @@ Takes a file and creates pretty graphs of it with both cubic interpolation and b
 
 def cubiccurve(data):
     #takes output of convert.py
+    xs = []
+    ys = []
 
     for pair in data:
         xs.append(pair[0])
@@ -43,6 +45,8 @@ def cubiccurve(data):
     return cubic
 
 def beziercurve(data):
+    xs = []
+    ys = []
     #Takes ouput from convert.py
     for pair in data:
         xs.append(pair[0])
@@ -53,6 +57,7 @@ def beziercurve(data):
     curve1 = bezier.Curve.from_nodes(nodes)
     return curve1
 
+
 '''
 #Cubic Spline graph
 for i in range(256):
@@ -60,7 +65,8 @@ for i in range(256):
     cubicy.append(cubic(i * xs[len(xs) - 1]/256)) #this horrible mess creates 256 points within the range of the original
 
 plt.plot(cubicx, cubicy)
-#plt.show()
+plt.show()
+
 
 #Bezier graph
 curve1.plot(num_pts=256)

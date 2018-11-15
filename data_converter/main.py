@@ -3,7 +3,7 @@ import os
 from data_converter import curve_gen
 
 #file_path = "../data/load/thrustcurve/AeroTech_D10.eng"
-#file_path = "../data/load/thrustcurve/AeroTech_D21.rse"
+#file_path = "../data/load/thrustcurve/Estes_D12.rse"
 #file_path = "../data/load/thrustcurve/AeroTech_H45.edx"
 #file_path = "../data/load/thrustcurve/AeroTech_H125.txt"
 
