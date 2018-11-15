@@ -20,19 +20,22 @@ file_path = "../data/load/thrustcurve/AeroTech_D10.eng"
 #file_path = "../data/load/thrustcurve/AeroTech_H125.txt"
 
 #Testing class stuff
-engine1 = me.Engine(file_path) #Create a new engine with the stats of a H45
+engine1 = me.Engine(file_path) #Create a new engine with the thrust curve of whatever engine
 
 #Simulates something falling 20 meters under gravity
 #               x,y,z
 g0 = np.array([0.0,0.0,-9.81])
+acc = np.array([0.0,0.0,0.0])
 position = np.array([0.0,0.0,20.0])
 velocity = np.array([0.0,0.0,0.0])
 t = 0
 dt = 0.01
 
 while position[2] > 0:
+    acc = np.array([0.0,0.0,0.0]) #reset acceleration
+    acc += g0 #add gravity to acceleration. Later sum all acceleration forces
     t += dt
-    position += velocity * dt + 0.5 * g0 *dt * dt #Just stealing this from someone else's implementation of the velocity verlet...
+    position += velocity * dt + 0.5 * acc *dt * dt #Just stealing this from someone else's implementation of the velocity verlet...
     velocity += g0 * dt
     if round(t, 10) == 0.1:
         engine1.ignite(0.1, t)

@@ -12,6 +12,8 @@ class Engine:
     burning = False
     curve = None #This is an object
     thrust = 0
+    dry_mass = 0 #This is going to be a bit of a challenge
+    wet_mass = 0
 
     def update(self, t, dt):
         #Call every loop of the sim
