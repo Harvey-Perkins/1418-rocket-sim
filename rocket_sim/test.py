@@ -12,20 +12,41 @@ Probably we should use classes for most of this.
 import numpy as np
 import scipy
 import math
+import module_engine as me
+
+file_path = "../data/load/thrustcurve/AeroTech_D10.eng"
+#file_path = "../data/load/thrustcurve/AeroTech_D21.rse"
+#file_path = "../data/load/thrustcurve/AeroTech_H45.edx"
+#file_path = "../data/load/thrustcurve/AeroTech_H125.txt"
+
+#Testing class stuff
+engine1 = me.Engine(file_path) #Create a new engine with the thrust curve of whatever engine
+
+#Simulates something falling 20 meters under gravity
+#               x,y,z
 g0 = np.array([0.0,0.0,-9.81])
-position = np.array([0.0,0.0,10.0])
+acc = np.array([0.0,0.0,0.0])
+position = np.array([0.0,0.0,20.0])
 velocity = np.array([0.0,0.0,0.0])
 t = 0
-dt = 0.001
+dt = 0.01
 
 while position[2] > 0:
-  t += dt
-  position += velocity * dt + 0.5 * g0 *dt * dt #Just stealing this from someone else's implementation of the velocity verlet...
-  velocity += g0 * dt
+    acc = np.array([0.0,0.0,0.0]) #reset acceleration
+    acc += g0 #add gravity to acceleration. Later sum all acceleration forces
+    t += dt
+    position += velocity * dt + 0.5 * acc *dt * dt #Just stealing this from someone else's implementation of the velocity verlet...
+    velocity += g0 * dt
+    if round(t, 10) == 0.1:
+        engine1.ignite(0.1, t)
+    engine1.update(t, dt)
+    print("Time:")
+    print(t)
 
 print(t)
 
 
+'''
 #some random rotation tests
 def rotation_matrix(axis, theta):
     #Returns rotation matrix describing counterclockwise rotation about the axis by theta radians
@@ -46,3 +67,4 @@ theta = math.radians(90) # original = 1.2
 
 print(np.dot(rotation_matrix(axis, theta), v))
 # [ 2.74911638  4.77180932  1.91629719]
+'''
