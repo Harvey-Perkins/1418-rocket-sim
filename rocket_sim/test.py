@@ -13,6 +13,8 @@ import numpy as np
 import scipy
 import math
 import module_engine as me
+import module_rocket as mr
+import matplotlib.pyplot as plt
 
 file_path = "../data/load/thrustcurve/AeroTech_D10.eng"
 #file_path = "../data/load/thrustcurve/AeroTech_D21.rse"
@@ -26,24 +28,31 @@ engine1 = me.Engine(file_path) #Create a new engine with the thrust curve of wha
 #               x,y,z
 g0 = np.array([0.0,0.0,-9.81])
 acc = np.array([0.0,0.0,0.0])
-position = np.array([0.0,0.0,20.0])
-velocity = np.array([0.0,0.0,0.0])
+start_position = np.array([0.0,0.0,20.0])
+start_velocity = np.array([0.0,0.0,0.0])
 t = 0
 dt = 0.01
 
-while position[2] > 0:
+xs = []#graph stuff
+ys = []
+
+rocket = mr.Rocket(start_position, start_velocity)
+
+while rocket.position[2] > 0:
     acc = np.array([0.0,0.0,0.0]) #reset acceleration
     acc += g0 #add gravity to acceleration. Later sum all acceleration forces
     t += dt
-    position += velocity * dt + 0.5 * acc *dt * dt #Just stealing this from someone else's implementation of the velocity verlet...
-    velocity += g0 * dt
-    if round(t, 10) == 0.1:
+    rocket.position += rocket.velocity * dt + 0.5 * acc * dt * dt #Just stealing this from someone else's implementation of the velocity verlet...
+    rocket.velocity += acc * dt
+    if round(t, 10) == 0.1: #Ignition command
         engine1.ignite(0.1, t)
     engine1.update(t, dt)
-    print("Time:")
-    print(t)
+    xs.append(t)
+    ys.append(rocket.position[2])
 
 print(t)
+plt.plot(xs,ys)
+plt.show()
 
 
 '''

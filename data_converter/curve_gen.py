@@ -38,7 +38,7 @@ def cubiccurve(data):
         ys.append(pair[1])
 
     #graphs the raw data
-    plt.plot(xs, ys)
+    #plt.plot(xs, ys)
     #plt.show()
 
     cubic = CubicSpline(xs, ys, bc_type="natural")

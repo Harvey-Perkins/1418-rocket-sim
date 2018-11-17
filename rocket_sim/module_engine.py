@@ -19,17 +19,15 @@ class Engine:
         #Call every loop of the sim
         if t >= self.fires_at: #Is the time past when it will start burning based on the ignition delay?
             self.burning = True
-            print("Burning")
 
         if self.burning == True: #Is the engine burning?
             self.time_past_ignition += dt #The engine has been burning for one more tick
 
         if self.curve(self.time_past_ignition) <= 0: #Is the thrust curve function returning negative numbers?
+            self.burning = False
             self.thrust = 0 #That means the engine has burnt out
         else:
             self.thrust = self.curve(self.time_past_ignition) #Otherwise, just use the thrust curve function to determine the thrust
-        print("Thrust:")
-        print(self.thrust)
 
     def ignite(self, delay, t):
         #Call when the ignition command is sent from the flight computer
