@@ -22,7 +22,7 @@ file_path = "../data/load/thrustcurve/AeroTech_D10.eng"
 #file_path = "../data/load/thrustcurve/AeroTech_H125.txt"
 
 #Testing class stuff
-engine1 = me.Engine(file_path) #Create a new engine with the thrust curve of whatever engine
+ #Create a new engine with the thrust curve of whatever engine
 
 #Simulates something falling 20 meters under gravity
 #               x,y,z
@@ -36,9 +36,15 @@ dt = 0.01
 xs = []#graph stuff
 ys = []
 
-rocket = mr.Rocket(start_position, start_velocity)
+X = 0 #Makes accessing vector parts easier
+Y = 1
+Z = 2
 
-while rocket.position[2] > 0:
+rocket = mr.Rocket(start_position, start_velocity)
+engine1 = me.Engine(file_path)
+rocket.add_part(engine1)
+
+while rocket.position[Z] > 0:
     acc = np.array([0.0,0.0,0.0]) #reset acceleration
     acc += g0 #add gravity to acceleration. Later sum all acceleration forces
     t += dt
@@ -47,8 +53,9 @@ while rocket.position[2] > 0:
     if round(t, 10) == 0.1: #Ignition command
         engine1.ignite(0.1, t)
     engine1.update(t, dt)
+    rocket.update()
     xs.append(t)
-    ys.append(rocket.position[2])
+    ys.append(rocket.position[Z])
 
 print(t)
 plt.plot(xs,ys)

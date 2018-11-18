@@ -11,8 +11,17 @@ class Rocket:
     mass = 0 #sum of all nested object's masses
     position = np.array([0.0,0.0,0.0])
     velocity = np.array([0.0,0.0,0.0])
+    parts = []
+
+    def update(self):
+        self.mass = 0
+        for part in self.parts:
+            self.mass += part.mass
 
     def __init__(self, position, velocity):
-        '''Probably will add parts?'''
         self.position = position
         self.velocity = velocity
+
+    def add_part(self, part):
+        #Call to add parts to the rocket
+        self.parts.append(part)
