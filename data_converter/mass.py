@@ -1,4 +1,4 @@
-'''pulls the mass out of formats where it is available'''
+'''returns the wet and prop masses of the engines'''
 
 import xml.etree.ElementTree as ET
 
