@@ -5,8 +5,8 @@ from data_converter import mass
 
 #file_path = "../data/load/thrustcurve/AeroTech_D10.eng"
 #file_path = "../data/load/thrustcurve/AeroTech_D21.rse"
-file_path = "../data/load/thrustcurve/AeroTech_H45.edx"
-#file_path = "../data/load/thrustcurve/AeroTech_H125.txt"
+#file_path = "../data/load/thrustcurve/AeroTech_H45.edx"
+file_path = "../data/load/thrustcurve/AeroTech_H125.txt"
 
 
 def thrustcurve(rel_path):
@@ -46,7 +46,7 @@ def engine_mass(rel_path):
     elif file.name.rsplit(".", 1)[1] == "edx":
         return mass.mass_edx(file)
     elif file.name.rsplit(".", 1)[1] == "txt":
-        return
+        return mass.mass_txt(file)
 
 print(engine_mass(file_path))
 #thrustcurve(file_path) #debug

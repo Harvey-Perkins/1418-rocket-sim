@@ -27,4 +27,10 @@ def mass_edx(file):
     masses.append(float(lines[11].split()[4])/1000)
     return masses
 
-def 
+def mass_txt(file):
+    #Returns [wet mass, prop mass] in kg
+    masses = []
+    lines = file.readlines()
+    masses.append(float(lines[4].split()[3].strip("g,"))/1000) #Extremely clear code
+    masses.append(float(lines[4].split()[6].strip("g"))/1000)
+    return masses
