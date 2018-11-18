@@ -18,3 +18,13 @@ def mass_rse(file):
     masses.append(float(root[0][0].attrib["initWt"])/1000)
     masses.append(float(root[0][0].attrib["propWt"])/1000)
     return masses
+
+def mass_edx(file):
+    #Returns [wet mass, prop mass] in kg
+    masses = []
+    lines = file.readlines()
+    masses.append(float(lines[12].split()[4])/1000)
+    masses.append(float(lines[11].split()[4])/1000)
+    return masses
+
+def 
