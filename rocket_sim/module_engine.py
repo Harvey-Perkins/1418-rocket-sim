@@ -22,9 +22,16 @@ class Engine:
     location = np.array([0.0,0.0,0.0]) #location relative to rocket origin
 
     def update(self, t, dt):
+        #REDESIGN THIS
         #Call every loop of the sim
         if t >= self.fires_at: #Is the time past when it will start burning based on the ignition delay?
             self.burning = True
+
+        if self.curve(self.time_past_ignition) <= 0 and t > self.fires_at: #Is the thrust curve function returning negative numbers and the global time greater than the fires_at time?
+            self.burning = False
+            self.thrust = np.array([0,0,0]) #That means the engine has burnt out
+            self.mass = self.dry_mass
+            self.m_dot = 0
 
         if self.burning == True: #Is the engine burning?
             self.time_past_ignition += dt #The engine has been burning for one more tick
@@ -33,11 +40,6 @@ class Engine:
             self.m_dot = np.linalg.norm(self.thrust)/self.ve #Mass flow rate in kg/s
             self.mass -= self.m_dot * dt #decrease the current mass appropiately
 
-        if self.curve(self.time_past_ignition) <= 0 and t > self.fires_at: #Is the thrust curve function returning negative numbers and the global time greater than the fires_at time?
-            self.burning = False
-            self.thrust = np.array([0,0,0]) #That means the engine has burnt out
-            self.mass = self.dry_mass
-            self.m_dot = 0
         else:
              pass
 

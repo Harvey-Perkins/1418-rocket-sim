@@ -14,8 +14,8 @@ import module_structure as ms
 import matplotlib.pyplot as plt
 
 #file_path = "../data/load/thrustcurve/AeroTech_D10.eng"
-file_path = "../data/load/thrustcurve/AeroTech_E15.rse"
-#file_path = "../data/load/thrustcurve/AeroTech_H45.edx"
+#file_path = "../data/load/thrustcurve/AeroTech_H45.rse"
+file_path = "../data/load/thrustcurve/AeroTech_H45.edx"
 #file_path = "../data/load/thrustcurve/AeroTech_H125.txt"
 
 #Testing class stuff
@@ -53,6 +53,8 @@ while rocket.position[Z] > 0:
 
     rocket.position += rocket.velocity * dt + 0.5 * rocket.acceleration * dt * dt #Just stealing this from someone else's implementation of the velocity verlet...
     rocket.velocity += rocket.acceleration * dt
+
+    print(engine1.thrust)
 
     #print(rocket.mass)
     #print(rocket.thrusts)
