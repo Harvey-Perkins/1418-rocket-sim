@@ -1,7 +1,7 @@
 '''
 This isn't permanant, just a demo of the velocity verlet and how it can calculate velocity and position from a acceleration vector.
 In this case, it just simulates dropping an object from a certain height.
-I think we will sum forces on the rocket, use the fact that F=MA to calculate the acceleration vector, then run that through the verlet.
+I think we will sum forces on the rocket, use the fact that F=MA (F/M = A) to calculate the acceleration vector, then run that through the verlet.
 
 '''
 
@@ -39,22 +39,24 @@ Z = 2
 
 rocket = mr.Rocket(start_position, start_velocity)
 structure1 = ms.Structure(1)
-engine1 = me.Engine(file_path, 1000)
-rocket.add_part(engine1, np.array([0.0,0.0,-1.0]))
-rocket.add_part(structure1, np.array([0.0,0.0,0.0]))
+engine1 = me.Engine(file_path, np.array([0,0,1]), 1000)
+rocket.add_engine(engine1, np.array([0.0,0.0,-1.0]))
+rocket.add_structure(structure1, np.array([0.0,0.0,0.0]))
 
 while rocket.position[Z] > 0:
-    acc = np.array([0.0,0.0,0.0]) #reset acceleration
-    acc += g0 #add gravity to acceleration. Later sum all acceleration forces
-    t += dt
-    rocket.position += rocket.velocity * dt + 0.5 * acc * dt * dt #Just stealing this from someone else's implementation of the velocity verlet...
-    rocket.velocity += acc * dt
+    #acc = np.array([0.0,0.0,0.0]) #reset acceleration
+    #acc += g0 #add gravity to acceleration. Later sum all acceleration forces
     if round(t, 10) == 0.1: #Ignition command
         engine1.ignite(0.1, t)
     rocket.update(t, dt)
 
-    print(rocket.mass)
-    print(engine1.thrust)
+    rocket.position += rocket.velocity * dt + 0.5 * rocket.acceleration * dt * dt #Just stealing this from someone else's implementation of the velocity verlet...
+    rocket.velocity += rocket.acceleration * dt
+
+    #print(rocket.mass)
+    #print(rocket.thrusts)
+
+    t += dt
 
     xs.append(t)
     ys.append(rocket.position[Z])

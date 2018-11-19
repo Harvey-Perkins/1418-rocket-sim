@@ -12,7 +12,7 @@ class Engine:
     fires_at = 10000000 #some number that is longer than the number of seconds that will be simulated
     burning = False
     curve = None #This is an object
-    thrust_vector = np.array([0,0,1]) #Thrust vector points straight up
+    thrust_vector = np.array([0,0,1]) #Thrust vector points straight up (default)
     thrust = np.array([0.0,0.0,0.0]) #Current thrust vector
     dry_mass = 0 #empty mass
     wet_mass = 0 #Fully loaded mass
@@ -51,13 +51,16 @@ class Engine:
         print("Ignition command sent")
 
 
-    def __init__(self, file, ve): #ve is required, but not used if it can be pulled from the files. Otherwise just look up values
+    def __init__(self, file, vector, ve): #ve is required, but not used if it can be pulled from the files. Otherwise just look up values
         #Anything here is auto-run when the class is instantiated
         #Arguments can be passed along with self, such as the file name of the thrust curve to load
+        #vector should be a numpy array indicating the direction of the engine (unit vector)
+        #ve should the the exhaust velocity of the engine in m/s, unless the file has it
         self.curve = main.thrustcurve(file) #Load thrust curve function
         self.wet_mass = main.engine_mass(file)[0]
         self.dry_mass = main.engine_mass(file)[0] - main.engine_mass(file)[1] #wet mass - prop mass = dry mass
         self.mass = self.wet_mass #engine starts loaded
+        self.thrust_vector = vector
         if not is_number(main.engine_ve(file)):
             self.ve = ve
         else:
