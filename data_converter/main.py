@@ -5,7 +5,7 @@ from data_converter import mass
 from data_converter import isp
 
 #file_path = "../data/load/thrustcurve/AeroTech_D10.eng"
-file_path = "../data/load/thrustcurve/AeroTech_D21.rse"
+#file_path = "../data/load/thrustcurve/AeroTech_D21.rse"
 #file_path = "../data/load/thrustcurve/AeroTech_H45.edx"
 #file_path = "../data/load/thrustcurve/AeroTech_H125.txt"
 
@@ -62,12 +62,12 @@ def engine_ve(rel_path):
     elif file.name.rsplit(".", 1)[1] == "eng": #detects file extension
         return "No ve in that format. Look up the isp/ve for the engine and plug it in manually."
     elif file.name.rsplit(".", 1)[1] == "rse":
-        return
+        return isp.ve_rse(file)
     elif file.name.rsplit(".", 1)[1] == "edx":
-        return
+        return isp.ve_edx(file)
     elif file.name.rsplit(".", 1)[1] == "txt":
-        return
+        return "No ve in that format. Look up the isp/ve for the engine and plug it in manually"
 
 #print(engine_mass(file_path))
-print(engine_ve(file_path))
+#print(engine_ve(file_path))
 #thrustcurve(file_path) #debug
