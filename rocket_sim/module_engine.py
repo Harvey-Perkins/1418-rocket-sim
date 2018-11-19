@@ -12,23 +12,34 @@ class Engine:
     burning = False
     curve = None #This is an object
     thrust = 0
-    dry_mass = 0 #This is going to be a bit of a challenge
-    wet_mass = 0
-    mass = 0
+    dry_mass = 0 #empty mass
+    wet_mass = 0 #Fully loaded mass
+    mass = 0 #*Current* mass
+    ve = 0
+    m_dot = 0 #mass flow rate
 
     def update(self, t, dt):
         #Call every loop of the sim
+        self.m_dot = self.thrust/self.ve #Mass flow rate in kg/s
+
+        self.mass -= self.m_dot * dt #decrease the current mass appropiately.
+
         if t >= self.fires_at: #Is the time past when it will start burning based on the ignition delay?
             self.burning = True
 
         if self.burning == True: #Is the engine burning?
             self.time_past_ignition += dt #The engine has been burning for one more tick
 
-        if self.curve(self.time_past_ignition) <= 0: #Is the thrust curve function returning negative numbers?
+        if self.curve(self.time_past_ignition) <= 0 and t > self.fires_at: #Is the thrust curve function returning negative numbers?
             self.burning = False
             self.thrust = 0 #That means the engine has burnt out
+            self.mass = self.dry_mass
+            self.m_dot = 0
         else:
             self.thrust = self.curve(self.time_past_ignition) #Otherwise, just use the thrust curve function to determine the thrust
+
+        print("Engine Mass: " + str(self.mass))
+
 
     def ignite(self, delay, t):
         #Call when the ignition command is sent from the flight computer
@@ -40,7 +51,25 @@ class Engine:
         print("Ignition command sent")
 
 
-    def __init__(self, file):
+    def __init__(self, file, ve): #ve is required, but not used if it can be pulled from the files. Otherwise just look up values
         #Anything here is auto-run when the class is instantiated
         #Arguments can be passed along with self, such as the file name of the thrust curve to load
         self.curve = main.thrustcurve(file) #Load thrust curve function
+        self.wet_mass = main.engine_mass(file)[0]
+        self.dry_mass = main.engine_mass(file)[0] - main.engine_mass(file)[1] #wet mass - prop mass = dry mass
+        self.mass = self.wet_mass #engine starts loaded
+        if not is_number(main.engine_ve(file)):
+            self.ve = ve
+        else:
+            self.ve = main.engine_ve(file)
+        print(self.ve)
+        print("Dry mass:")
+        print(self.dry_mass)
+
+
+def is_number(s):
+    try:
+        float(s)
+        return True
+    except ValueError:
+        return False

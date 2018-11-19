@@ -13,9 +13,10 @@ class Rocket:
     velocity = np.array([0.0,0.0,0.0])
     parts = []
 
-    def update(self):
+    def update(self, t, dt):
         self.mass = 0
         for part in self.parts:
+            part.update(t, dt) #this ensures that only the rocket needs to be explictly updated in the main code
             self.mass += part.mass
 
     def __init__(self, position, velocity):

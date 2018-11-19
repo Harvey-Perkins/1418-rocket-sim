@@ -14,10 +14,11 @@ import scipy
 import math
 import module_engine as me
 import module_rocket as mr
+import module_structure as ms
 import matplotlib.pyplot as plt
 
-file_path = "../data/load/thrustcurve/AeroTech_D10.eng"
-#file_path = "../data/load/thrustcurve/AeroTech_D21.rse"
+#file_path = "../data/load/thrustcurve/AeroTech_D10.eng"
+file_path = "../data/load/thrustcurve/AeroTech_D21.rse"
 #file_path = "../data/load/thrustcurve/AeroTech_H45.edx"
 #file_path = "../data/load/thrustcurve/AeroTech_H125.txt"
 
@@ -41,8 +42,10 @@ Y = 1
 Z = 2
 
 rocket = mr.Rocket(start_position, start_velocity)
-engine1 = me.Engine(file_path)
+structure1 = ms.Structure(1)
+engine1 = me.Engine(file_path, 1000)
 rocket.add_part(engine1)
+rocket.add_part(structure1)
 
 while rocket.position[Z] > 0:
     acc = np.array([0.0,0.0,0.0]) #reset acceleration
@@ -52,8 +55,8 @@ while rocket.position[Z] > 0:
     rocket.velocity += acc * dt
     if round(t, 10) == 0.1: #Ignition command
         engine1.ignite(0.1, t)
-    engine1.update(t, dt)
-    rocket.update()
+    rocket.update(t, dt)
+
     xs.append(t)
     ys.append(rocket.position[Z])
 
