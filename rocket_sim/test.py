@@ -46,9 +46,9 @@ rocket.add_structure(structure1, np.array([0.0,0.0,0.0]))
 while rocket.position[Z] > 0:
     #acc = np.array([0.0,0.0,0.0]) #reset acceleration
     #acc += g0 #add gravity to acceleration. Later sum all acceleration forces
-    if round(t, 10) == 1.45: #Ignition command
-        plt.annotate('Ignition', xy=(t, rocket.position[Z]), xytext=(2, 12),arrowprops=dict(facecolor='black', shrink=0)) #plots arrow pointing to when the ignition command is sent
-        engine1.ignite(0, t)
+    if round(t, 10) == 1.35: #Ignition command
+        plt.annotate('Ignition command', xy=(t, rocket.position[Z]), xytext=(2, 12),arrowprops=dict(facecolor='black', shrink=0)) #plots arrow pointing to when the ignition command is sent
+        engine1.ignite(0.1, t)
     rocket.update(t, dt)
 
     rocket.position += rocket.velocity * dt + 0.5 * rocket.acceleration * dt * dt #Just stealing this from someone else's implementation of the velocity verlet...
