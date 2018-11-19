@@ -54,6 +54,7 @@ while rocket.position[Z] > 0:
     rocket.update(t, dt)
 
     print(rocket.mass)
+    print(engine1.thrust)
 
     xs.append(t)
     ys.append(rocket.position[Z])

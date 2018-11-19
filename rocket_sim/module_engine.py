@@ -12,7 +12,8 @@ class Engine:
     fires_at = 10000000 #some number that is longer than the number of seconds that will be simulated
     burning = False
     curve = None #This is an object
-    thrust = 0
+    thrust_vector = np.array([0,0,1]) #Thrust vector points straight up
+    thrust = np.array([0.0,0.0,0.0]) #Current thrust vector
     dry_mass = 0 #empty mass
     wet_mass = 0 #Fully loaded mass
     mass = 0 #*Current* mass
@@ -28,16 +29,17 @@ class Engine:
         if self.burning == True: #Is the engine burning?
             self.time_past_ignition += dt #The engine has been burning for one more tick
             #mass only changes while the engine is burning
-            self.m_dot = self.thrust/self.ve #Mass flow rate in kg/s
+            self.thrust = self.curve(self.time_past_ignition) * self.thrust_vector
+            self.m_dot = np.linalg.norm(self.thrust)/self.ve #Mass flow rate in kg/s
             self.mass -= self.m_dot * dt #decrease the current mass appropiately
 
-        if self.curve(self.time_past_ignition) <= 0 and t > self.fires_at: #Is the thrust curve function returning negative numbers?
+        if self.curve(self.time_past_ignition) <= 0 and t > self.fires_at: #Is the thrust curve function returning negative numbers and the global time greater than the fires_at time?
             self.burning = False
-            self.thrust = 0 #That means the engine has burnt out
+            self.thrust = np.array([0,0,0]) #That means the engine has burnt out
             self.mass = self.dry_mass
             self.m_dot = 0
         else:
-            self.thrust = self.curve(self.time_past_ignition) #Otherwise, just use the thrust curve function to determine the thrust
+             pass
 
     def ignite(self, delay, t):
         #Call when the ignition command is sent from the flight computer
