@@ -39,9 +39,6 @@ class Engine:
         else:
             self.thrust = self.curve(self.time_past_ignition) #Otherwise, just use the thrust curve function to determine the thrust
 
-        #print("Engine Mass: " + str(self.mass))
-
-
     def ignite(self, delay, t):
         #Call when the ignition command is sent from the flight computer
         if delay == "random":
