@@ -44,8 +44,8 @@ Z = 2
 rocket = mr.Rocket(start_position, start_velocity)
 structure1 = ms.Structure(1)
 engine1 = me.Engine(file_path, 1000)
-rocket.add_part(engine1)
-rocket.add_part(structure1)
+rocket.add_part(engine1, np.array([0.0,0.0,-1.0]))
+rocket.add_part(structure1, np.array([0.0,0.0,0.0]))
 
 while rocket.position[Z] > 0:
     acc = np.array([0.0,0.0,0.0]) #reset acceleration
@@ -56,6 +56,8 @@ while rocket.position[Z] > 0:
     if round(t, 10) == 0.1: #Ignition command
         engine1.ignite(0.1, t)
     rocket.update(t, dt)
+
+    print(rocket.mass)
 
     xs.append(t)
     ys.append(rocket.position[Z])

@@ -23,6 +23,7 @@ class Rocket:
         self.position = position
         self.velocity = velocity
 
-    def add_part(self, part):
+    def add_part(self, part, location): #Location is relative to rocket origin
         #Call to add parts to the rocket
         self.parts.append(part)
+        part.location = location

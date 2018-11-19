@@ -2,6 +2,7 @@
 
 from data_converter import main
 import random
+import numpy as np
 
 class Engine:
     '''The engine class'''
@@ -17,18 +18,18 @@ class Engine:
     mass = 0 #*Current* mass
     ve = 0
     m_dot = 0 #mass flow rate
+    location = np.array([0.0,0.0,0.0]) #location relative to rocket origin
 
     def update(self, t, dt):
         #Call every loop of the sim
-        self.m_dot = self.thrust/self.ve #Mass flow rate in kg/s
-
-        self.mass -= self.m_dot * dt #decrease the current mass appropiately.
-
         if t >= self.fires_at: #Is the time past when it will start burning based on the ignition delay?
             self.burning = True
 
         if self.burning == True: #Is the engine burning?
             self.time_past_ignition += dt #The engine has been burning for one more tick
+            #mass only changes while the engine is burning
+            self.m_dot = self.thrust/self.ve #Mass flow rate in kg/s
+            self.mass -= self.m_dot * dt #decrease the current mass appropiately
 
         if self.curve(self.time_past_ignition) <= 0 and t > self.fires_at: #Is the thrust curve function returning negative numbers?
             self.burning = False
@@ -38,7 +39,7 @@ class Engine:
         else:
             self.thrust = self.curve(self.time_past_ignition) #Otherwise, just use the thrust curve function to determine the thrust
 
-        print("Engine Mass: " + str(self.mass))
+        #print("Engine Mass: " + str(self.mass))
 
 
     def ignite(self, delay, t):
