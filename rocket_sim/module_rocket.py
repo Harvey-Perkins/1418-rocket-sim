@@ -1,7 +1,7 @@
 '''
 This should be a class that will be the entire rocket, with all the parts as sort of sub-pieces.
-Will need some kind of local coord system
-The problem is the the CoM is what is simulated, but right now it's set up for the CoM to be apart from what the simulated center is
+
+
 
 '''
 

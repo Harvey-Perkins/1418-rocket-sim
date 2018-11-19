@@ -11,6 +11,7 @@ class Engine:
     time_past_ignition = 0
     fires_at = 10000000 #some number that is longer than the number of seconds that will be simulated
     burning = False
+    burnt_out = False
     curve = None #This is an object
     thrust_vector = np.array([0,0,1]) #Thrust vector points straight up (default)
     thrust = np.array([0.0,0.0,0.0]) #Current thrust vector
@@ -24,16 +25,20 @@ class Engine:
     def update(self, t, dt):
         #REDESIGN THIS
         #Call every loop of the sim
-        if t >= self.fires_at: #Is the time past when it will start burning based on the ignition delay?
+
+
+
+        if t >= self.fires_at and not self.burning and not self.burnt_out: #Is the time past when it will start burning based on the ignition delay and the engine is not yet burning.
             self.burning = True
 
         if self.curve(self.time_past_ignition) <= 0 and t > self.fires_at: #Is the thrust curve function returning negative numbers and the global time greater than the fires_at time?
             self.burning = False
+            self.burnt_out = True
             self.thrust = np.array([0,0,0]) #That means the engine has burnt out
             self.mass = self.dry_mass
             self.m_dot = 0
 
-        if self.burning == True: #Is the engine burning?
+        if self.burning and not self.burnt_out: #Is the engine burning?
             self.time_past_ignition += dt #The engine has been burning for one more tick
             #mass only changes while the engine is burning
             self.thrust = self.curve(self.time_past_ignition) * self.thrust_vector
