@@ -64,7 +64,6 @@ while rocket.position[Z] > 0:
     #print(rocket.thrusts)
 
     xs.append(t)
-    print(np.linalg.norm(rocket.thrusts))
     thrustY.append(np.linalg.norm(rocket.thrusts))
     ys.append(rocket.position[Z])
 
