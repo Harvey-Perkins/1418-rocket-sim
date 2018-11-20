@@ -20,13 +20,11 @@ class Engine:
     mass = 0 #*Current* mass
     ve = 0
     m_dot = 0 #mass flow rate
-    location = np.array([0.0,0.0,0.0]) #During setup, relative to the rocket origin, but during runtime relative to the CoM
+    location = np.array([0.0,0.0,0.0]) #relative to the rocket origin
+    comlocation = np.array([0,0,0]) #location relative to rocket CoM
 
     def update(self, t, dt):
-        #REDESIGN THIS
         #Call every loop of the sim
-
-
 
         if t >= self.fires_at and not self.burning and not self.burnt_out: #Is the time past when it will start burning based on the ignition delay and the engine is not yet burning.
             self.burning = True

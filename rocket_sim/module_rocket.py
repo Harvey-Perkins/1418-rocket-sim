@@ -64,7 +64,6 @@ def com_calc (vehicle):
     zcom = 0
     weightedsum = 0
 
-    #CoM position calc
     #Each of these loops calculates the com in one dimension
     for part in vehicle.parts:
         weightedsum += part.location[0] * part.mass #X
