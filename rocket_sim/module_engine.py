@@ -20,7 +20,7 @@ class Engine:
     mass = 0 #*Current* mass
     ve = 0
     m_dot = 0 #mass flow rate
-    location = np.array([0.0,0.0,0.0]) #location relative to rocket origin
+    location = np.array([0.0,0.0,0.0]) #During setup, relative to the rocket origin, but during runtime relative to the CoM
 
     def update(self, t, dt):
         #REDESIGN THIS

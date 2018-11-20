@@ -14,7 +14,7 @@ import module_structure as ms
 import matplotlib.pyplot as plt
 
 #file_path = "../data/load/thrustcurve/AeroTech_D10.eng"
-file_path = "../data/load/thrustcurve/AeroTech_E15.rse"
+file_path = "../data/load/thrustcurve/AeroTech_D21.rse"
 #file_path = "../data/load/thrustcurve/AeroTech_H45.edx"
 #file_path = "../data/load/thrustcurve/AeroTech_H125.txt"
 
@@ -22,7 +22,7 @@ file_path = "../data/load/thrustcurve/AeroTech_E15.rse"
 #               x,y,z
 g0 = np.array([0.0,0.0,-9.81])
 acc = np.array([0.0,0.0,0.0])
-start_position = np.array([0.0,0.0,0.0])
+start_position = np.array([0.0,0.0,20.0])
 start_velocity = np.array([0.0,0.0,0.0])
 t = 0
 dt = 0.01
@@ -36,7 +36,7 @@ Y = 1
 Z = 2
 
 rocket = mr.Rocket(start_position, start_velocity)
-structure1 = ms.Structure(0.0737)
+structure1 = ms.Structure(0.8)
 engine1 = me.Engine(file_path, np.array([0,0,1]), 1000)
 rocket.add_engine(engine1, np.array([0.0,0.0,-1.0]))
 rocket.add_structure(structure1, np.array([0.0,0.0,0.0]))
@@ -49,12 +49,12 @@ ax2 = ax1.twinx()
 ax2.set_ylabel("Thrust (N)")
 fig.tight_layout()
 
-while rocket.position[Z] > -10:
+while rocket.position[Z] > 0:
     #acc = np.array([0.0,0.0,0.0]) #reset acceleration
     #acc += g0 #add gravity to acceleration. Later sum all acceleration forces
-    if round(t, 10) == 0: #Ignition command
+    if round(t, 10) == 1.58: #Ignition command
         ax1.annotate('Ignition command', xy=(t, rocket.position[Z]), xytext=(2, 12),arrowprops=dict(facecolor='black', shrink=0)) #plots arrow pointing to when the ignition command is sent
-        engine1.ignite(0, t)
+        engine1.ignite(0.1, t)
     rocket.update(t, dt)
 
     rocket.position += rocket.velocity * dt + 0.5 * rocket.acceleration * dt * dt #Just stealing this from someone else's implementation of the velocity verlet...
