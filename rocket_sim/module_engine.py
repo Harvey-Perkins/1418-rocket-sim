@@ -21,7 +21,7 @@ class Engine:
     ve = 0
     m_dot = 0 #mass flow rate
     location = np.array([0.0,0.0,0.0]) #relative to the rocket origin
-    comlocation = np.array([0,0,0]) #location relative to rocket CoM
+    comlocation = np.array([0.0,0.0,0.0]) #location relative to rocket CoM
 
     def update(self, t, dt):
         #Call every loop of the sim

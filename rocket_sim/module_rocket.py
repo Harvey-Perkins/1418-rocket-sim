@@ -57,6 +57,10 @@ class Rocket:
         self.parts.append(part)
         part.location = location
 
+def partcomlocation (vehicle, part):
+    #calculates part's position relative to vehicle's CoM
+    pass
+
 def com_calc (vehicle):
     #CoM position calc
     xcom = 0
