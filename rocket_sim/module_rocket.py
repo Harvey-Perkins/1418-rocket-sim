@@ -31,8 +31,10 @@ class Rocket:
         self.thrusts = np.array([0.0,0.0,0.0])
 
         for part in self.parts:
+            #loop to update every part as necessary
             part.update(t, dt) #this ensures that only the rocket needs to be explictly updated in the main code
             self.mass += part.mass
+            partcomlocation(self, part)
         for engine in self.engines:
             self.thrusts += engine.thrust
 
@@ -59,7 +61,11 @@ class Rocket:
 
 def partcomlocation (vehicle, part):
     #calculates part's position relative to vehicle's CoM
-    pass
+    part.comlocation = part.location - vehicle.CoM
+    print("location")
+    print(part.location)
+    print("comlocation")
+    print(part.comlocation)
 
 def com_calc (vehicle):
     #CoM position calc
