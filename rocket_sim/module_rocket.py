@@ -13,9 +13,12 @@ g0 = np.array([0.0,0.0,-9.81])
 class Rocket:
     '''The main rocket class'''
     mass = 0 #sum of all nested object's masses
-    position = np.array([0.0,0.0,0.0]) #Global position of the rocket
-    velocity = np.array([0.0,0.0,0.0])
+    position = np.array([0.0,0.0,0.0]) #Global position of the rocket's CoM
+    velocity = np.array([0.0,0.0,0.0]) #Global velocity of the rocket's CoM
     acceleration = np.array([0,0,0])
+    xorientation = np.array([1.0,0.0,0.0]) #Global orientation vectors. Starts with no rotation, which means fire end towards ground, pointy end towards space
+    yorientation = np.array([0.0,1.0,0.0])
+    zorientation = np.array([0.0,0.0,1.0])
     parts = []
     engines = []
     structures = []
@@ -26,7 +29,6 @@ class Rocket:
 
     def update(self, t, dt):
         self.acceleration = np.array([0.0,0.0,0.0])
-
         self.mass = 0
         self.thrusts = np.array([0.0,0.0,0.0])
 
@@ -41,7 +43,14 @@ class Rocket:
         self.acceleration = self.thrusts/self.mass
         self.acceleration += g0
 
+        orthogonal(self)
         self.CoM = com_calc(self)
+        print("x orientation")
+        print(self.xorientation)
+        print("y orientation")
+        print(self.yorientation)
+        print("z orientation")
+        print(self.zorientation)
 
     def __init__(self, position, velocity):
         self.position = position
@@ -59,13 +68,20 @@ class Rocket:
         self.parts.append(part)
         part.location = location
 
+def orthogonal (vehicle):
+    #Sets orientation vectors orthogonal to each other
+    x = vehicle.xorientation
+    y = vehicle.yorientation
+    z = vehicle.zorientation
+    if (x != np.cross(y, z)).any() or (y != np.cross(z, x)).any() or (z != np.cross(x, y)).any(): #Weird syntax thanks to numpy handling boolean arrays weirdly
+        print("Making orientation vectors orthogonal")
+        vehicle.zorientiation = np.cross(x, y) #This isn't perfect, but it should be fine for handling small floating point errors
+        z = vehicle.zorientation
+        vehicle.xorientation = np.cross(y, z)
+
 def partcomlocation (vehicle, part):
     #calculates part's position relative to vehicle's CoM
     part.comlocation = part.location - vehicle.CoM
-    print("location")
-    print(part.location)
-    print("comlocation")
-    print(part.comlocation)
 
 def com_calc (vehicle):
     #CoM position calc
