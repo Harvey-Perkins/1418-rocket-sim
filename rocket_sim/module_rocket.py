@@ -75,7 +75,7 @@ def orthogonal (vehicle):
     z = vehicle.zorientation
     if (x != np.cross(y, z)).any() or (y != np.cross(z, x)).any() or (z != np.cross(x, y)).any(): #Weird syntax thanks to numpy handling boolean arrays weirdly
         print("Making orientation vectors orthogonal")
-        vehicle.zorientiation = np.cross(x, y) #This isn't perfect, but it should be fine for handling small floating point errors
+        vehicle.zorientation = np.cross(x, y) #This isn't perfect, but it should be fine for handling small floating point errors
         z = vehicle.zorientation
         vehicle.xorientation = np.cross(y, z)
 
