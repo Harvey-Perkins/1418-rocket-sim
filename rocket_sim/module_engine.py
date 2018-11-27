@@ -24,14 +24,12 @@ class Engine:
     comlocation = np.array([0.0,0.0,0.0]) #location relative to rocket CoM
     CoT = np.array([0.0,0.0,0.0]) #location of center of thrust relative to engine's CoM (position)
     arm = np.array([0,0,0]) #Vector from rocket's CoM to engine's CoT
-    torque = np.array([0,0,0]) #Torque vector for this specific engine
+    torque = np.array([0,0,0]) #Torque vector for this specific engine relative to rocket
 
     def update(self, t, dt):
         #Call every loop of the sim
 
         self.arm = self.comlocation + self.CoT #Torque arm
-        print("arm")
-        print(self.arm)
 
         if t >= self.fires_at and not self.burning and not self.burnt_out: #Is the time past when it will start burning based on the ignition delay and the engine is not yet burning.
             self.burning = True
@@ -50,7 +48,9 @@ class Engine:
             self.m_dot = np.linalg.norm(self.thrust)/self.ve #Mass flow rate in kg/s
             self.mass -= self.m_dot * dt #decrease the current mass appropiately
 
-
+        self.torque = np.cross(self.arm, self.thrust)
+        #print("torque")
+        #print(self.torque)
 
     def ignite(self, delay, t):
         #Call when the ignition command is sent from the flight computer

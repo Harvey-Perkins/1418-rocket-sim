@@ -22,12 +22,14 @@ class Rocket:
     thrusts = np.array([0.0,0.0,0.0]) #sum of all (translational) forces on the rocket in N
     CoT = np.array([0.0,0.0,0.0]) #Center of thrust relative to rocket origin
     CoM = np.array([0.0,0.0,0.0]) #CoM relative to an arbitrary origin
+    torques = np.array([0,0,0]) #Sum of torques on the rocket
 
 
     def update(self, t, dt):
         self.acceleration = np.array([0.0,0.0,0.0])
         self.mass = 0
         self.thrusts = np.array([0.0,0.0,0.0])
+        self.torques = np.array([0.0,0.0,0.0])
 
         for part in self.parts:
             #loop to update every part as necessary
@@ -35,19 +37,21 @@ class Rocket:
             self.mass += part.mass
             partcomlocation(self, part)
         for engine in self.engines:
+            #For things specific to engines, like thrust, torque, etc
             self.thrusts += engine.thrust
+            self.torques += engine.torque
 
         self.acceleration = self.thrusts/self.mass
         self.acceleration += g0
 
         orthogonal(self)
         self.CoM = com_calc(self)
-        print("x orientation")
+        '''print("x orientation")
         print(self.xorientation)
         print("y orientation")
         print(self.yorientation)
         print("z orientation")
-        print(self.zorientation)
+        print(self.zorientation)'''
 
     def __init__(self, position, velocity):
         self.position = position
