@@ -1,9 +1,6 @@
 '''
 This should be a class that will be the entire rocket, with all the parts as sort of sub-pieces.
 
-TODO:
-Make the parts' locations relative to the CoM during runtime
-
 '''
 
 import numpy as np
@@ -56,11 +53,12 @@ class Rocket:
         self.position = position
         self.velocity = velocity
 
-    def add_engine(self, part, location): #Location is relative to rocket origin when added, but is changed during runtime to be relative to the CoM
+    def add_engine(self, part, location, CoT): #Location is relative to rocket origin, CoT is relative to engine CoM (origin)
         #Call to add engines to the rocket
         self.engines.append(part)
         self.parts.append(part)
         part.location = location
+        part.CoT = CoT
 
     def add_structure(self, part, location):
         #Call to add structure to the rocket
