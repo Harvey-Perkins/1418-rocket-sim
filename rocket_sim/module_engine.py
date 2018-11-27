@@ -18,7 +18,7 @@ class Engine:
     dry_mass = 0 #empty mass
     wet_mass = 0 #Fully loaded mass
     mass = 0 #*Current* mass
-    ve = 0
+    ve = 0 #Exhaust velocity 
     m_dot = 0 #mass flow rate
     location = np.array([0.0,0.0,0.0]) #relative to the rocket origin
     comlocation = np.array([0.0,0.0,0.0]) #location relative to rocket CoM

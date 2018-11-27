@@ -16,13 +16,13 @@ class Rocket:
     xorientation = np.array([1.0,0.0,0.0]) #Global orientation vectors. Starts with no rotation, which means fire end towards ground, pointy end towards space
     yorientation = np.array([0.0,1.0,0.0])
     zorientation = np.array([0.0,0.0,1.0])
-    parts = []
+    parts = [] #List of all parts in the rocket
     engines = []
     structures = []
     thrusts = np.array([0.0,0.0,0.0]) #sum of all (translational) forces on the rocket in N
     CoT = np.array([0.0,0.0,0.0]) #Center of thrust relative to rocket origin
     CoM = np.array([0.0,0.0,0.0]) #CoM relative to an arbitrary origin
-    torques = np.array([0,0,0]) #Sum of torques on the rocket
+    torques = np.array([0,0,0]) #Sum of torques on the rocket in N * whatever we're measuring distance in (probably meters)
 
 
     def update(self, t, dt):
