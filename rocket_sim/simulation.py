@@ -38,7 +38,7 @@ Z = 2
 rocket = mr.Rocket(start_position, start_velocity)
 structure1 = ms.Structure(0.8)
 engine1 = me.Engine(file_path, np.array([0,0,1]), 1000)
-rocket.add_engine(engine1, np.array([0,0,-1.0]), np.array([0,0,0.05]))
+rocket.add_engine(engine1, np.array([0,0,-1.0]), np.array([0,0,0.05])) #move CoT to instance creation
 rocket.add_structure(structure1, np.array([0.0,0.0,0.0]))
 
 #Graph stuff

@@ -15,7 +15,7 @@ class Rocket:
     acceleration = np.array([0,0,0])
     xorientation = np.array([1.0,0.0,0.0]) #Global orientation vectors. Starts with no rotation, which means fire end towards ground, pointy end towards space
     yorientation = np.array([0.0,1.0,0.0])
-    zorientation = np.array([0.0,0.0,1.0])
+    zorientation = np.array([0.0,0.0,1.0]) #THESE ARE THE ROTATION MATRIX FOR THE ENTIRE ROCKET!!!
     parts = [] #List of all parts in the rocket
     engines = []
     structures = []
@@ -69,6 +69,8 @@ class Rocket:
         self.structures.append(part)
         self.parts.append(part)
         part.location = location
+
+#Object end
 
 def orthogonal (vehicle):
     #Sets orientation vectors orthogonal to each other
