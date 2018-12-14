@@ -1,5 +1,6 @@
 '''
 This should be a class that will be the entire rocket, with all the parts as sort of sub-pieces.
+It updates everything else when it is updated
 
 '''
 

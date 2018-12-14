@@ -1,3 +1,8 @@
+'''
+TODO:
+Close the file after I'm done with it
+'''
+
 from data_converter import convert
 import os
 from data_converter import curve_gen
