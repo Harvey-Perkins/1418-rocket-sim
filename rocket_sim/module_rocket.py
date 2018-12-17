@@ -15,8 +15,8 @@ class Rocket:
     velocity = np.array([0.0,0.0,0.0]) #Global velocity of the rocket's CoM
     acceleration = np.array([0,0,0])
     xorientation = np.array([1.0,0.0,0.0]) #Global orientation vectors. Starts with no rotation, which means fire end towards ground, pointy end towards space
-    yorientation = np.array([0.0,1.0,0.0])
-    zorientation = np.array([0.0,0.0,1.0]) #THESE ARE THE ROTATION MATRIX FOR THE ENTIRE ROCKET!!!
+    yorientation = np.array([0.0,0.0,1.0]) #Fix
+    zorientation = np.array([0.0,0.0,1.0]) #THESE MAKE UP THE ROTATION MATRIX FOR THE ENTIRE ROCKET!!!
     parts = [] #List of all parts in the rocket
     engines = []
     structures = []
@@ -50,6 +50,9 @@ class Rocket:
 
         orthogonal(self)
         self.CoM = com_calc(self)
+
+        self.rot_matrix = np.array([self.xorientation, self.yorientation, self.zorientation]) #Should I even update this here?
+
         '''print("x orientation")
         print(self.xorientation)
         print("y orientation")
@@ -77,8 +80,8 @@ class Rocket:
 #Object end
 
 def vectortoworld(vector, matrix):
-    #WIP
-    return vector
+    #This turns local vectors into world vectors, based on the rotation matrix. Rotation matrix inverses are the same as their transposes
+    return np.dot(np.transpose(matrix), vector)
 
 def orthogonal (vehicle):
     #Sets orientation vectors orthogonal to each other

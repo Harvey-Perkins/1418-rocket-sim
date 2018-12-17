@@ -39,7 +39,7 @@ rocket = mr.Rocket(start_position, start_velocity)
 structure1 = ms.Structure(0.0736)
 engine1 = me.Engine(file_path, np.array([0,0,1]), 1000)
 #Stick them on the rocket
-rocket.add_engine(engine1, np.array([0,0,-1.0]), np.array([0,0,0.05])) #move CoT to instance creation
+rocket.add_engine(engine1, np.array([1,0,-1.0]), np.array([0,0,0.05])) #move CoT to instance creation
 rocket.add_structure(structure1, np.array([0.0,0.0,0.0]))
 
 #Graph stuff
@@ -52,6 +52,10 @@ fig.tight_layout()
 
 while rocket.position[Z] >= 0:
     #print(rocket.rot_matrix)
+    print("Torque vector local:")
+    print(rocket.torques)
+    print("Torque vector world:")
+    print(rocket.torques_world)
     if rocket.position[Z] == 0: #Ignition command
         ax1.annotate('Ignition command', xy=(t, rocket.position[Z]), xytext=(2, 12),arrowprops=dict(facecolor='black', shrink=0)) #plots arrow pointing to when the ignition command is sent
         engine1.ignite(0, t)
