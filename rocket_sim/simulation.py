@@ -51,15 +51,14 @@ ax2.set_ylabel("Thrust (N)")
 fig.tight_layout()
 
 while rocket.position[Z] >= 0:
-    #acc = np.array([0.0,0.0,0.0]) #reset acceleration
-    #acc += g0 #add gravity to acceleration. Later sum all acceleration forces
+    #print(rocket.rot_matrix)
     if rocket.position[Z] == 0: #Ignition command
         ax1.annotate('Ignition command', xy=(t, rocket.position[Z]), xytext=(2, 12),arrowprops=dict(facecolor='black', shrink=0)) #plots arrow pointing to when the ignition command is sent
         engine1.ignite(0, t)
     rocket.update(t, dt)
 
     rocket.position += rocket.velocity * dt + 0.5 * rocket.acceleration * dt * dt #Just stealing this from someone else's implementation of the velocity verlet...
-    rocket.velocity += rocket.acceleration * dt #This bit goes second
+    rocket.velocity += rocket.acceleration * dt #Forward Euler is good enough for this
 
     #print(rocket.mass)
     #print(rocket.thrusts)

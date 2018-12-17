@@ -23,7 +23,9 @@ class Rocket:
     thrusts = np.array([0.0,0.0,0.0]) #sum of all (translational) forces on the rocket in N
     CoT = np.array([0.0,0.0,0.0]) #Center of thrust relative to rocket origin
     CoM = np.array([0.0,0.0,0.0]) #CoM relative to an arbitrary origin
-    torques = np.array([0,0,0]) #Sum of torques on the rocket in N * whatever we're measuring distance in (probably meters)
+    torques = np.array([0,0,0]) #Sum of torques on the rocket in Nm. Local coords
+    torques_world = np.array([0,0,0]) #Sum or torques on the rocket, in world coords
+    rot_matrix = np.array([xorientation, yorientation, zorientation]) #This might be wrong
 
 
     def update(self, t, dt):
@@ -41,6 +43,7 @@ class Rocket:
             #For things specific to engines, like thrust, torque, etc
             self.thrusts += engine.thrust
             self.torques += engine.torque
+            self.torques_world = vectortoworld(self.torques, self.rot_matrix)
 
         self.acceleration = self.thrusts/self.mass
         self.acceleration += g0
@@ -72,6 +75,10 @@ class Rocket:
         part.location = location
 
 #Object end
+
+def vectortoworld(vector, matrix):
+    #WIP
+    return vector
 
 def orthogonal (vehicle):
     #Sets orientation vectors orthogonal to each other
