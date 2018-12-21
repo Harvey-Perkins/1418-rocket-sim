@@ -2,6 +2,7 @@
 TODO:
 Make a proper test setup for this program
 
+Moment of inertia
 '''
 
 import numpy as np
