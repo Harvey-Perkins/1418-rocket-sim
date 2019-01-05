@@ -53,6 +53,12 @@ class Engine:
         # print("torque")
         # print(self.torque)
 
+    def get_thrust(self, t, dt):
+        if self.burning and not self.burnt_out:
+            return self.curve(self.time_past_ignition) * self.thrust_vector
+        else:
+            return np.array([0, 0, 0])
+
     def ignite(self, delay, t):
         # Call when the ignition command is sent from the flight computer
         if delay == "random":

@@ -16,6 +16,7 @@ class Rocket:
     position = np.array([0.0, 0.0, 0.0])  # Global position of the rocket's CoM
     velocity = np.array([0.0, 0.0, 0.0])  # Global velocity of the rocket's CoM
     acceleration = np.array([0, 0, 0])
+    acceleration_tpdt = np.array([0, 0, 0])  # at t + dt
     xorientation = np.array([1.0, 0.0, 0.0])  # Global orientation vectors. Starts with no rotation, which means fire end towards ground, pointy end towards space
     yorientation = np.array([0.0, 0.0, 1.0])  # Wrong temporarily for testing vectors
     zorientation = np.array([0.0, -1.0, 0.0])  # THESE MAKE UP THE ROTATION MATRIX FOR THE ENTIRE ROCKET!!!
@@ -30,9 +31,11 @@ class Rocket:
     engines = []
     structures = []
     thrusts = np.array([0.0, 0.0, 0.0])  # sum of all (translational) forces on the rocket in N
+    thrusts_tpdt = np.array([0.0, 0.0, 0.0])  # at time t + dt
     CoT = np.array([0.0, 0.0, 0.0])  # Center of thrust relative to rocket origin
     CoM = np.array([0.0, 0.0, 0.0])  # CoM relative to an arbitrary origin
     torques = np.array([0, 0, 0])  # Sum of torques on the rocket in Nm. Local coords
+    torques_tpdt = np.array([0, 0, 0])  # For use after time update
     torques_world = np.array([0, 0, 0])  # Sum or torques on the rocket, in world coords
     rot_matrix = np.array([xorientation, yorientation, zorientation])  # This might be wrong
     ang_momentum = np.array([0, 0, 0])  # local coords
@@ -40,26 +43,58 @@ class Rocket:
     def update(self, t, dt):
         # reset
         self.acceleration = np.array([0.0, 0.0, 0.0])
+        self.acceleration_tpdt = np.array([0.0, 0.0, 0.0])
         self.mass = 0
         self.thrusts = np.array([0.0, 0.0, 0.0])
+        self.thrusts_tpdt = np.array([0.0, 0.0, 0.0])
         self.torques = np.array([0.0, 0.0, 0.0])
 
         for part in self.parts:
             # loop to update every part as necessary
             part.update(t, dt)  # this ensures that only the rocket needs to be explictly updated in the main code
             self.mass += part.mass
-            partcomlocation(self, part)  # updates location relative to rocket com for all parts
+
+        self.CoM = com_calc(self)
+
+        for part in self.parts:
+            # updates location relative to rocket com for all parts
+            # seperate loop so the rocket CoM is accurate
+            partcomlocation(self, part)
+
         for engine in self.engines:
             # For things specific to engines, like thrust, torque, etc
             self.thrusts += engine.thrust
             self.torques += engine.torque
             self.torques_world = vectortoworld(self.torques, self.rot_matrix)
 
+        # Compute acceleration
         self.acceleration = self.thrusts/self.mass
         self.acceleration += g0
 
+        # main update
+        self.position += self.velocity * dt + 0.5 * self.acceleration * dt * dt  # Just stealing this from someone else's implementation of the velocity verlet...
+
+        t += dt  # this is not the main time update, it's only used here
+
+        # compute forces at time time t + dt
+        for engine in self.engines:
+            # this is the t + dt version
+            # For things specific to engines, like thrust, torque, etc
+            self.thrusts_tpdt += engine.get_thrust(t, dt)
+
+        # compute acceleration at time t + dt
+        self.acceleration_tpdt = self.thrusts_tpdt/self.mass
+        self.acceleration_tpdt += g0
+
+        print("acceleration:")
+        print(self.acceleration)
+        print("acceleration_tpdt:")
+        print(self.acceleration_tpdt)
+
+        # Better velocty calc
+        self.velocity += 0.5 * (self.acceleration + self.acceleration_tpdt) * dt
+
         orthogonal(self)
-        self.CoM = com_calc(self)
 
         self.rot_matrix = np.array([self.xorientation, self.yorientation, self.zorientation])  # Should I even update this here?
 

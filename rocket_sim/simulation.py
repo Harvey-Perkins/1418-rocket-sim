@@ -53,18 +53,14 @@ fig.tight_layout()
 
 while rocket.position[Z] >= 0:
     # print(rocket.rot_matrix)
-    print("Torque vector local:")
+    '''print("Torque vector local:")
     print(rocket.torques)
     print("Torque vector world:")
-    print(rocket.torques_world)
+    print(rocket.torques_world)'''
     if rocket.position[Z] == 0:  # Ignition command
         ax1.annotate('Ignition command', xy=(t, rocket.position[Z]), xytext=(2, 12),arrowprops=dict(facecolor='black', shrink=0))  # plots arrow pointing to when the ignition command is sent
         engine1.ignite(0, t)  # Ignition command
     rocket.update(t, dt)
-
-    # main update
-    rocket.position += rocket.velocity * dt + 0.5 * rocket.acceleration * dt * dt  # Just stealing this from someone else's implementation of the velocity verlet...
-    rocket.velocity += rocket.acceleration * dt  # Forward Euler is good enough for this
 
     # print(rocket.mass)
     # print(rocket.thrusts)
