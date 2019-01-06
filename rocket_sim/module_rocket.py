@@ -15,8 +15,11 @@ class Rocket:
     mass = 0  # sum of all nested object's masses
     position = np.array([0.0, 0.0, 0.0])  # Global position of the rocket's CoM
     velocity = np.array([0.0, 0.0, 0.0])  # Global velocity of the rocket's CoM
-    acceleration = np.array([0, 0, 0])
+    velocity_world = np.array([0.0, 0.0, 0.0])  # local velocity
+    acceleration = np.array([0, 0, 0])  # in local coords
     acceleration_tpdt = np.array([0, 0, 0])  # at t + dt
+    acceleration_world = np.array([0, 0, 0])  # in world coords
+    acceleration_tpdt_world = np.array([0, 0, 0])  # in world coords
     xorientation = np.array([1.0, 0.0, 0.0])  # Global orientation vectors. Starts with no rotation, which means fire end towards ground, pointy end towards space
     yorientation = np.array([0.0, 0.0, 1.0])  # Wrong temporarily for testing vectors
     zorientation = np.array([0.0, -1.0, 0.0])  # THESE MAKE UP THE ROTATION MATRIX FOR THE ENTIRE ROCKET!!!
@@ -36,14 +39,19 @@ class Rocket:
     CoM = np.array([0.0, 0.0, 0.0])  # CoM relative to an arbitrary origin
     torques = np.array([0, 0, 0])  # Sum of torques on the rocket in Nm. Local coords
     torques_tpdt = np.array([0, 0, 0])  # For use after time update
-    torques_world = np.array([0, 0, 0])  # Sum or torques on the rocket, in world coords
+    # torques_world = np.array([0, 0, 0])  # Sum or torques on the rocket, in world coords
     rot_matrix = np.array([xorientation, yorientation, zorientation])  # This might be wrong
     ang_momentum = np.array([0, 0, 0])  # local coords
+    ang_velocity = np.array([0, 0, 0])
+    ang_delta_local = np.array([0, 0, 0])
+    ang_delta_world = np.array([0, 0, 0])
 
     def update(self, t, dt):
         # reset
         self.acceleration = np.array([0.0, 0.0, 0.0])
+        self.acceleration_world = np.array([0.0, 0.0, 0.0])
         self.acceleration_tpdt = np.array([0.0, 0.0, 0.0])
+        self.acceleration_tpdt_world = np.array([0.0, 0.0, 0.0])
         self.mass = 0
         self.thrusts = np.array([0.0, 0.0, 0.0])
         self.thrusts_tpdt = np.array([0.0, 0.0, 0.0])
@@ -51,7 +59,7 @@ class Rocket:
 
         for part in self.parts:
             # loop to update every part as necessary
-            part.update(t, dt)  # this ensures that only the rocket needs to be explictly updated in the main code
+            part.update(t, dt)
             self.mass += part.mass
 
         self.CoM = com_calc(self)
@@ -65,14 +73,28 @@ class Rocket:
             # For things specific to engines, like thrust, torque, etc
             self.thrusts += engine.thrust
             self.torques += engine.torque
-            self.torques_world = vectortoworld(self.torques, self.rot_matrix)
+            # self.torques_world = vectortoworld(self.torques, self.rot_matrix)
 
         # Compute acceleration
         self.acceleration = self.thrusts/self.mass
-        self.acceleration += g0
+        self.acceleration_world = vectortoworld(self.acceleration, self.rot_matrix)
+        # add gravity
+        self.acceleration_world += g0
+        # convert back, now that gravity is added
+        self.acceleration = vectortolocal(self.acceleration_world, self.rot_matrix)
+
+        print(self.acceleration_world)
 
         # main update
-        self.position += self.velocity * dt + 0.5 * self.acceleration * dt * dt  # Just stealing this from someone else's implementation of the velocity verlet...
+        # Done in world coords
+        self.position += self.velocity_world * dt + 0.5 * self.acceleration_world * dt * dt
+
+        self.ang_velocity = self.ang_momentum / self.inertia
+        self.ang_delta_local = self.ang_velocity * dt + 0.5 * dt * dt * self.torques / self.inertia
+        self.ang_delta_world = vectortoworld(self.ang_delta_local, self.rot_matrix)
+        # TBC
+        # rotation matrix update
+        # print(self.ang_delta_local)
 
         t += dt  # this is not the main time update, it's only used here
 
@@ -84,15 +106,18 @@ class Rocket:
 
         # compute acceleration at time t + dt
         self.acceleration_tpdt = self.thrusts_tpdt/self.mass
-        self.acceleration_tpdt += g0
+        self.acceleration_tpdt_world = vectortoworld(self.acceleration_tpdt, self.rot_matrix)
+        self.acceleration_tpdt_world += g0  # wrong
+        self.acceleration_tpdt = vectortolocal(self.acceleration_tpdt_world, self.rot_matrix)
 
-        print("acceleration:")
+        '''print("acceleration:")
         print(self.acceleration)
         print("acceleration_tpdt:")
-        print(self.acceleration_tpdt)
+        print(self.acceleration_tpdt)'''
 
         # Better velocty calc
         self.velocity += 0.5 * (self.acceleration + self.acceleration_tpdt) * dt
+        self.velocity_world = vectortoworld(self.velocity, self.rot_matrix)
 
         orthogonal(self)
 
@@ -130,6 +155,12 @@ def vectortoworld(vector, matrix):
     return np.dot(np.transpose(matrix), vector)
 
 
+def vectortolocal(vector, matrix):
+    # This turns world vectors into local vectors, based on the rotation matrix
+    # Rotation matrix inverses are the same as their transposes
+    return np.dot(matrix, vector)
+
+
 def orthogonal(vehicle):
     # Sets orientation vectors orthogonal to each other
     x = vehicle.xorientation
@@ -141,6 +172,24 @@ def orthogonal(vehicle):
         vehicle.zorientation = np.cross(x, y)
         z = vehicle.zorientation
         vehicle.xorientation = np.cross(y, z)
+
+
+def rodrigues(ang_delta):
+    # Rodrigues' rotation forumla.
+    # Takes a vector describing the angle the vehicle rotates by in a tick
+    # returns the rotation matrix for rotation around the axis of the vector
+    # by the magnitude of the vector.
+    axis = normalize(ang_delta)
+    angle = np.linalg.norm(ang_delta)
+    # TBC
+
+
+def normalize(vector):
+    # Normalizes (extracts the unit vector in) any vector
+    norm = np.linalg.norm(vector)
+    if norm == 0:
+        return vector
+    return vector / norm
 
 
 def partcomlocation(vehicle, part):
