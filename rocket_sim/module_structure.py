@@ -1,4 +1,5 @@
-'''Structure that has no affect on the rocket except mass and aerodynamics (WIP)'''
+'''Structure that has no affect on the rocket except mass and aerodynamics
+'''
 
 import numpy as np
 

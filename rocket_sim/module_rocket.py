@@ -16,31 +16,38 @@ class Rocket:
     position = np.array([0.0, 0.0, 0.0])  # Global position of the rocket's CoM
     velocity = np.array([0.0, 0.0, 0.0])  # Global velocity of the rocket's CoM
     velocity_world = np.array([0.0, 0.0, 0.0])  # local velocity
-    acceleration = np.array([0, 0, 0])  # in local coords
-    acceleration_tpdt = np.array([0, 0, 0])  # at t + dt
-    acceleration_world = np.array([0, 0, 0])  # in world coords
-    acceleration_tpdt_world = np.array([0, 0, 0])  # in world coords
-    xorientation = np.array([1.0, 0.0, 0.0])  # Global orientation vectors. Starts with no rotation, which means fire end towards ground, pointy end towards space
-    yorientation = np.array([0.0, 0.0, 1.0])  # Wrong temporarily for testing vectors
-    zorientation = np.array([0.0, -1.0, 0.0])  # THESE MAKE UP THE ROTATION MATRIX FOR THE ENTIRE ROCKET!!!
+    accel = np.array([0, 0, 0])  # in local coords
+    accel_tpdt = np.array([0, 0, 0])  # at t + dt
+    accel_world = np.array([0, 0, 0])  # in world coords
+    accel_tpdt_world = np.array([0, 0, 0])  # in world coords
+    # Global orientation vectors.
+    # Starts with no rotation, which means fire end towards ground,
+    # pointy end towards space
+    xorientation = np.array([1.0, 0.0, 0.0])
+    yorientation = np.array([0.0, 1.0, 0.0])
+    zorientation = np.array([0.0, 0.0, 1.0])
+    # Using three values rather than a proper tensor only works in local coords
+    # and only so long as the rocket is entirely symmetrical about the z axis
+    # Values are probably conpletely unreasonable
+    # These represent the diagonal of the moment of inertia tensor
     xinertia = 0.08  # pitch or yaw. kg * m^2
     yinertia = 0.08  # pitch or yaw
     zinertia = 0.01  # roll
-    # Using three values rather than a proper tensor only works in local coords, and only so long as the rocket is entirely symmetrical about the z axis with an angle less than 180.
-    # Values are probably conpletely unreasonable
-    # This is hopefully the right way to deal with inertia. These represent the diagonal of the moment of inertia tensor
-    inertia = np.array([xinertia, yinertia, zinertia])  # I believe I can use the individual inertia parts, which are the diagonal of the tensor, as a vector to make some of the math easier.
+    # As a vector
+    inertia = np.array([xinertia, yinertia, zinertia])
     parts = []  # List of all parts in the rocket
     engines = []
     structures = []
-    thrusts = np.array([0.0, 0.0, 0.0])  # sum of all (translational) forces on the rocket in N
+    # sum of all (translational) forces on the rocket in N
+    thrusts = np.array([0.0, 0.0, 0.0])
     thrusts_tpdt = np.array([0.0, 0.0, 0.0])  # at time t + dt
-    CoT = np.array([0.0, 0.0, 0.0])  # Center of thrust relative to rocket origin
+    # Center of thrust relative to rocket origin
+    CoT = np.array([0.0, 0.0, 0.0])
     CoM = np.array([0.0, 0.0, 0.0])  # CoM relative to an arbitrary origin
-    torques = np.array([0, 0, 0])  # Sum of torques on the rocket in Nm. Local coords
+    # Sum of torques on the rocket in Nm. Local coords
+    torques = np.array([0, 0, 0])
     torques_tpdt = np.array([0, 0, 0])  # For use after time update
-    # torques_world = np.array([0, 0, 0])  # Sum or torques on the rocket, in world coords
-    rot_matrix = np.array([xorientation, yorientation, zorientation])  # This might be wrong
+    rot_matrix = np.array([xorientation, yorientation, zorientation])
     ang_momentum = np.array([0, 0, 0])  # local coords
     ang_velocity = np.array([0, 0, 0])
     ang_delta_local = np.array([0, 0, 0])
@@ -48,10 +55,10 @@ class Rocket:
 
     def update(self, t, dt):
         # reset
-        self.acceleration = np.array([0.0, 0.0, 0.0])
-        self.acceleration_world = np.array([0.0, 0.0, 0.0])
-        self.acceleration_tpdt = np.array([0.0, 0.0, 0.0])
-        self.acceleration_tpdt_world = np.array([0.0, 0.0, 0.0])
+        self.accel = np.array([0.0, 0.0, 0.0])
+        self.accel_world = np.array([0.0, 0.0, 0.0])
+        self.accel_tpdt = np.array([0.0, 0.0, 0.0])
+        self.accel_tpdt_world = np.array([0.0, 0.0, 0.0])
         self.mass = 0
         self.thrusts = np.array([0.0, 0.0, 0.0])
         self.thrusts_tpdt = np.array([0.0, 0.0, 0.0])
@@ -76,22 +83,25 @@ class Rocket:
             # self.torques_world = vectortoworld(self.torques, self.rot_matrix)
 
         # Compute acceleration
-        self.acceleration = self.thrusts/self.mass
-        self.acceleration_world = vectortoworld(self.acceleration, self.rot_matrix)
+        self.accel = self.thrusts/self.mass
+        self.accel_world = vectortoworld(self.accel, self.rot_matrix)
         # add gravity
-        self.acceleration_world += g0
+        self.accel_world += g0
         # convert back, now that gravity is added
-        self.acceleration = vectortolocal(self.acceleration_world, self.rot_matrix)
+        self.accel = vectortolocal(
+            self.accel_world, self.rot_matrix)
 
-        print(self.acceleration_world)
+        print(self.accel_world)
 
         # main update
         # Done in world coords
-        self.position += self.velocity_world * dt + 0.5 * self.acceleration_world * dt * dt
+        self.position += self.velocity_world * dt + 0.5 * self.accel_world * dt * dt
 
         self.ang_velocity = self.ang_momentum / self.inertia
         self.ang_delta_local = self.ang_velocity * dt + 0.5 * dt * dt * self.torques / self.inertia
-        self.ang_delta_world = vectortoworld(self.ang_delta_local, self.rot_matrix)
+        self.ang_delta_world = vectortoworld(
+                                            self.ang_delta_local,
+                                            self.rot_matrix)
         # TBC
         # rotation matrix update
         # print(self.ang_delta_local)
@@ -105,23 +115,32 @@ class Rocket:
             self.thrusts_tpdt += engine.get_thrust(t, dt)
 
         # compute acceleration at time t + dt
-        self.acceleration_tpdt = self.thrusts_tpdt/self.mass
-        self.acceleration_tpdt_world = vectortoworld(self.acceleration_tpdt, self.rot_matrix)
-        self.acceleration_tpdt_world += g0  # wrong
-        self.acceleration_tpdt = vectortolocal(self.acceleration_tpdt_world, self.rot_matrix)
+        self.accel_tpdt = self.thrusts_tpdt/self.mass
+        self.accel_tpdt_world = vectortoworld(
+                                                self.accel_tpdt,
+                                                self.rot_matrix)
+        # add gravity
+        self.accel_tpdt_world += g0
+        # convert back
+        self.accel_tpdt = vectortolocal(
+            self.accel_tpdt_world,
+            self.rot_matrix)
 
-        '''print("acceleration:")
-        print(self.acceleration)
-        print("acceleration_tpdt:")
-        print(self.acceleration_tpdt)'''
+        '''print("accel:")
+        print(self.accel)
+        print("accel_tpdt:")
+        print(self.accel_tpdt)'''
 
-        # Better velocty calc
-        self.velocity += 0.5 * (self.acceleration + self.acceleration_tpdt) * dt
+        # Better velocity calc
+        self.velocity += 0.5 * (self.accel + self.accel_tpdt) * dt
         self.velocity_world = vectortoworld(self.velocity, self.rot_matrix)
 
         orthogonal(self)
 
-        self.rot_matrix = np.array([self.xorientation, self.yorientation, self.zorientation])  # Should I even update this here?
+        # Should I even update this here?
+        self.rot_matrix = np.array([self.xorientation,
+                                    self.yorientation,
+                                    self.zorientation])
 
         '''print("x orientation")
         print(self.xorientation)
@@ -134,7 +153,8 @@ class Rocket:
         self.position = position
         self.velocity = velocity
 
-    def add_engine(self, part, location):  # Location is relative to rocket origin
+    def add_engine(self, part, location):
+        # Location is relative to rocket origin
         # Call to add engines to the rocket
         self.engines.append(part)
         self.parts.append(part)
@@ -166,9 +186,10 @@ def orthogonal(vehicle):
     x = vehicle.xorientation
     y = vehicle.yorientation
     z = vehicle.zorientation
-    if (x != np.cross(y, z)).any() or (y != np.cross(z, x)).any() or (z != np.cross(x, y)).any():  # Weird syntax thanks to numpy handling boolean arrays weirdly
+    if (x != np.cross(y, z)).any() or (y != np.cross(z, x)).any() or (z != np.cross(x, y)).any():
+        # Weird syntax thanks to numpy handling boolean arrays weirdly
         print("Making orientation vectors orthogonal")
-        # This isn't perfect, but it should be fine for handling small floating point errors
+        # This should be fine for handling floating point errors
         vehicle.zorientation = np.cross(x, y)
         z = vehicle.zorientation
         vehicle.xorientation = np.cross(y, z)
@@ -219,4 +240,5 @@ def com_calc(vehicle):
         weightedsum += part.location[2] * part.mass  # Z
     zcom = weightedsum / vehicle.mass
 
-    return np.array([xcom, ycom, zcom])  # This just takes each one dimensional com and makes it into a 3d point
+    # This just takes each one dimensional com and makes it into a 3d point
+    return np.array([xcom, ycom, zcom])

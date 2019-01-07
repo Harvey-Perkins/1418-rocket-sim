@@ -38,7 +38,10 @@ Z = 2
 # Initialize parts
 rocket = mr.Rocket(start_position, start_velocity)
 structure1 = ms.Structure(0.0736)
-engine1 = me.Engine(file_path, np.array([0, 0, 1]), 1000, np.array([0, 0, 0.05]))
+engine1 = me.Engine(file_path,
+                    np.array([0, 0, 1]),
+                    1000,
+                    np.array([0, 0, 0.05]))
 # Stick them on the rocket
 rocket.add_engine(engine1, np.array([1, 0, -1.0]))
 rocket.add_structure(structure1, np.array([0.0, 0.0, 0.0]))
@@ -58,7 +61,10 @@ while rocket.position[Z] >= 0:
     print("Torque vector world:")
     print(rocket.torques_world)'''
     if rocket.position[Z] == 0:  # Ignition command
-        ax1.annotate('Ignition command', xy=(t, rocket.position[Z]), xytext=(2, 12),arrowprops=dict(facecolor='black', shrink=0))  # plots arrow pointing to when the ignition command is sent
+        # plots arrow pointing to when the ignition command is sent
+        ax1.annotate('Ignition command', xy=(
+            t, rocket.position[Z]), xytext=(2, 12),
+            arrowprops=dict(facecolor='black', shrink=0))
         engine1.ignite(0, t)  # Ignition command
     rocket.update(t, dt)
 
