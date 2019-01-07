@@ -62,8 +62,9 @@ while rocket.position[Z] >= 0:
     print(rocket.torques_world)'''
     if rocket.position[Z] == 0:  # Ignition command
         # plots arrow pointing to when the ignition command is sent
-        ax1.annotate('Ignition command', xy=(
-            t, rocket.position[Z]), xytext=(2, 12),
+        ax1.annotate(
+            'Ignition command',
+            xy=(t, rocket.position[Z]), xytext=(2, 12),
             arrowprops=dict(facecolor='black', shrink=0))
         engine1.ignite(0, t)  # Ignition command
     rocket.update(t, dt)

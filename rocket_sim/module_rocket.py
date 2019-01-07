@@ -6,6 +6,7 @@ It updates everything else when it is updated
 '''
 
 import numpy as np
+import math
 
 g0 = np.array([0.0, 0.0, -9.81])
 
@@ -201,8 +202,18 @@ def rodrigues(ang_delta):
     # returns the rotation matrix for rotation around the axis of the vector
     # by the magnitude of the vector.
     axis = normalize(ang_delta)
+    print(axis)
+    # The way angles (radians or degrees) work here might be wrong
     angle = np.linalg.norm(ang_delta)
-    # TBC
+    print(angle)
+    a = math.cos(angle/2)
+    b = -axis[0] * math.sin(angle/2)
+    c = -axis[1] * math.sin(angle/2)
+    d = -axis[2] * math.sin(angle/2)
+    return np.array([
+                    [a*a + b*b - c*c - d*d, 2*(b*c - a*d), 2*(b*d + a*c)],
+                    [2*(b*c + a*d), a*a + c*c - b*b - d*d, 2*(c*d - a*b)],
+                    [2*(b*d - a*c), 2*(c*d + a*b), a*a + d*d - b*b - c*c]])
 
 
 def normalize(vector):
