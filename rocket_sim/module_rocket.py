@@ -92,8 +92,6 @@ class Rocket:
         self.accel = vectortolocal(
             self.accel_world, self.rot_matrix)
 
-        print(self.accel_world)
-
         # main update
         # Done in world coords
         self.position += self.velocity_world * dt + 0.5 * self.accel_world * dt * dt
@@ -103,9 +101,11 @@ class Rocket:
         self.ang_delta_world = vectortoworld(
                                             self.ang_delta_local,
                                             self.rot_matrix)
-        # TBC
-        # rotation matrix update
-        # print(self.ang_delta_local)
+        # Not sure if this should be multiplied from left or right
+        self.rot_matrix = np.matmul(self.rot_matrix, rodrigues(self.ang_delta_world))
+        # matmul is a preliminary feature in numpy
+        print(self.ang_delta_world)
+        print(self.rot_matrix)
 
         t += dt  # this is not the main time update, it's only used here
 
@@ -136,12 +136,19 @@ class Rocket:
         self.velocity += 0.5 * (self.accel + self.accel_tpdt) * dt
         self.velocity_world = vectortoworld(self.velocity, self.rot_matrix)
 
+        self.xorientation = np.split(self.rot_matrix, 3)[0][0]
+        self.yorientation = np.split(self.rot_matrix, 3)[1][0]
+        self.zorientation = np.split(self.rot_matrix, 3)[2][0]
+        # print(self.xorientation)
+
         orthogonal(self)
 
         # Should I even update this here?
         self.rot_matrix = np.array([self.xorientation,
                                     self.yorientation,
                                     self.zorientation])
+
+        # print(self.rot_matrix)
 
         '''print("x orientation")
         print(self.xorientation)
@@ -202,14 +209,15 @@ def rodrigues(ang_delta):
     # returns the rotation matrix for rotation around the axis of the vector
     # by the magnitude of the vector.
     axis = normalize(ang_delta)
-    print(axis)
+    # print(axis)
     # The way angles (radians or degrees) work here might be wrong
     angle = np.linalg.norm(ang_delta)
-    print(angle)
+    # print(angle)
     a = math.cos(angle/2)
     b = -axis[0] * math.sin(angle/2)
     c = -axis[1] * math.sin(angle/2)
     d = -axis[2] * math.sin(angle/2)
+    # I don't think this can be made any more readable
     return np.array([
                     [a*a + b*b - c*c - d*d, 2*(b*c - a*d), 2*(b*d + a*c)],
                     [2*(b*c + a*d), a*a + c*c - b*b - d*d, 2*(c*d - a*b)],
