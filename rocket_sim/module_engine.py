@@ -72,6 +72,9 @@ class Engine:
         else:
             return np.array([0, 0, 0])
 
+    def get_torque(self, t, dt):
+        return np.cross(self.arm, self.get_thrust(t, dt))
+
     def ignite(self, delay, t):
         # Call when the ignition command is sent from the flight computer
         if delay == "random":

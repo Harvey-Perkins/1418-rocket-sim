@@ -8,7 +8,7 @@ It updates everything else when it is updated
 import numpy as np
 import math
 
-g0 = np.array([0.0, 0.0, -9.81])
+g0 = np.array([0.0, 0.0, -9.81])  # 0,0,-9.81
 
 
 class Rocket:
@@ -81,10 +81,17 @@ class Rocket:
             # For things specific to engines, like thrust, torque, etc
             self.thrusts += engine.thrust
             self.torques += engine.torque
-            # self.torques_world = vectortoworld(self.torques, self.rot_matrix)
+
+        print(self.thrusts)
 
         # Compute acceleration
+        '''print("Thusts:")
+        print(self.thrusts)
+        print("Mass:")
+        print(self.mass)'''
         self.accel = self.thrusts/self.mass
+        '''print("accel:")
+        print(self.accel)'''
         self.accel_world = vectortoworld(self.accel, self.rot_matrix)
         # add gravity
         self.accel_world += g0
@@ -102,10 +109,11 @@ class Rocket:
                                             self.ang_delta_local,
                                             self.rot_matrix)
         # Not sure if this should be multiplied from left or right
-        self.rot_matrix = np.matmul(self.rot_matrix, rodrigues(self.ang_delta_world))
+        # self.rot_matrix = np.matmul(self.rot_matrix, rodrigues(self.ang_delta_world))
+        self.rot_matrix = np.matmul(rodrigues(self.ang_delta_world), self.rot_matrix)
         # matmul is a preliminary feature in numpy
-        print(self.ang_delta_world)
-        print(self.rot_matrix)
+        # print(self.ang_delta_world)
+        # print(self.rot_matrix)
 
         t += dt  # this is not the main time update, it's only used here
 
@@ -217,6 +225,10 @@ def rodrigues(ang_delta):
     b = -axis[0] * math.sin(angle/2)
     c = -axis[1] * math.sin(angle/2)
     d = -axis[2] * math.sin(angle/2)
+    '''a = angle
+    b = -axis[0] * angle
+    c = -axis[1] * angle
+    d = -axis[2] * angle'''
     # I don't think this can be made any more readable
     return np.array([
                     [a*a + b*b - c*c - d*d, 2*(b*c - a*d), 2*(b*d + a*c)],
