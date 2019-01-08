@@ -2,6 +2,8 @@
 This should be a class that will be the entire rocket,
 with all the parts as sort of sub-pieces.
 It updates everything else when it is updated
+TODO:
+t + dt updates to rotation stuff
 
 '''
 
@@ -64,6 +66,7 @@ class Rocket:
         self.thrusts = np.array([0.0, 0.0, 0.0])
         self.thrusts_tpdt = np.array([0.0, 0.0, 0.0])
         self.torques = np.array([0.0, 0.0, 0.0])
+        self.torques_tpdt = np.array([0.0, 0.0, 0.0])
 
         for part in self.parts:
             # loop to update every part as necessary
@@ -82,16 +85,8 @@ class Rocket:
             self.thrusts += engine.thrust
             self.torques += engine.torque
 
-        print(self.thrusts)
-
         # Compute acceleration
-        '''print("Thusts:")
-        print(self.thrusts)
-        print("Mass:")
-        print(self.mass)'''
         self.accel = self.thrusts/self.mass
-        '''print("accel:")
-        print(self.accel)'''
         self.accel_world = vectortoworld(self.accel, self.rot_matrix)
         # add gravity
         self.accel_world += g0
@@ -112,7 +107,9 @@ class Rocket:
         # self.rot_matrix = np.matmul(self.rot_matrix, rodrigues(self.ang_delta_world))
         self.rot_matrix = np.matmul(rodrigues(self.ang_delta_world), self.rot_matrix)
         # matmul is a preliminary feature in numpy
-        # print(self.ang_delta_world)
+        # print(self.velocity_world)
+        # print(self.accel_world)
+        # print(self.ang_velocity)
         # print(self.rot_matrix)
 
         t += dt  # this is not the main time update, it's only used here
@@ -122,6 +119,7 @@ class Rocket:
             # this is the t + dt version
             # For things specific to engines, like thrust, torque, etc
             self.thrusts_tpdt += engine.get_thrust(t, dt)
+            self.torques_tpdt += engine.get_torque(t, dt)
 
         # compute acceleration at time t + dt
         self.accel_tpdt = self.thrusts_tpdt/self.mass
@@ -144,10 +142,11 @@ class Rocket:
         self.velocity += 0.5 * (self.accel + self.accel_tpdt) * dt
         self.velocity_world = vectortoworld(self.velocity, self.rot_matrix)
 
+        self.ang_momentum = self.ang_momentum + 0.5 * (self.torques + self.torques_tpdt) * dt
+
         self.xorientation = np.split(self.rot_matrix, 3)[0][0]
         self.yorientation = np.split(self.rot_matrix, 3)[1][0]
         self.zorientation = np.split(self.rot_matrix, 3)[2][0]
-        # print(self.xorientation)
 
         orthogonal(self)
 
@@ -155,8 +154,6 @@ class Rocket:
         self.rot_matrix = np.array([self.xorientation,
                                     self.yorientation,
                                     self.zorientation])
-
-        # print(self.rot_matrix)
 
         '''print("x orientation")
         print(self.xorientation)
