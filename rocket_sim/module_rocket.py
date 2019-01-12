@@ -139,21 +139,12 @@ class Rocket:
         print(self.accel_tpdt)'''
 
         # Better velocity calc
-        self.velocity += 0.5 * (self.accel + self.accel_tpdt) * dt
-        self.velocity_world = vectortoworld(self.velocity, self.rot_matrix)
+        self.velocity_world += 0.5 * (self.accel_world + self.accel_tpdt_world) * dt
+        self.velocity = vectortolocal(self.velocity_world, self.rot_matrix)
 
         self.ang_momentum = self.ang_momentum + 0.5 * (self.torques + self.torques_tpdt) * dt
 
-        self.xorientation = np.split(self.rot_matrix, 3)[0][0]
-        self.yorientation = np.split(self.rot_matrix, 3)[1][0]
-        self.zorientation = np.split(self.rot_matrix, 3)[2][0]
-
-        orthogonal(self)
-
-        # Should I even update this here?
-        self.rot_matrix = np.array([self.xorientation,
-                                    self.yorientation,
-                                    self.zorientation])
+        self.rot_matrix = orthogonal(self.rot_matrix)
 
         '''print("x orientation")
         print(self.xorientation)
@@ -194,18 +185,20 @@ def vectortolocal(vector, matrix):
     return np.dot(matrix, vector)
 
 
-def orthogonal(vehicle):
+def orthogonal(matrix):
     # Sets orientation vectors orthogonal to each other
-    x = vehicle.xorientation
-    y = vehicle.yorientation
-    z = vehicle.zorientation
+    x = np.split(matrix, 3)[0][0]
+    y = np.split(matrix, 3)[1][0]
+    z = np.split(matrix, 3)[2][0]
+
     if (x != np.cross(y, z)).any() or (y != np.cross(z, x)).any() or (z != np.cross(x, y)).any():
         # Weird syntax thanks to numpy handling boolean arrays weirdly
         print("Making orientation vectors orthogonal")
         # This should be fine for handling floating point errors
-        vehicle.zorientation = np.cross(x, y)
-        z = vehicle.zorientation
-        vehicle.xorientation = np.cross(y, z)
+        z = np.cross(x, y)
+        x = np.cross(y, z)
+
+    return np.array([x, y, z])
 
 
 def rodrigues(ang_delta):
