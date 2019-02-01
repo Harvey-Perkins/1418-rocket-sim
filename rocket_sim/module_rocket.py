@@ -87,12 +87,15 @@ class Rocket:
 
         # Compute acceleration
         self.accel = self.thrusts/self.mass
-        self.accel_world = vectortoworld(self.accel, self.rot_matrix)
+        '''
         # add gravity
         self.accel_world += g0
         # convert back, now that gravity is added
         self.accel = vectortolocal(
             self.accel_world, self.rot_matrix)
+        '''
+        self.accel += vectortolocal(g0, self.rot_matrix)
+        self.accel_world = vectortoworld(self.accel, self.rot_matrix)
 
         # main update
         # Done in world coords
@@ -123,7 +126,10 @@ class Rocket:
 
         # compute acceleration at time t + dt
         self.accel_tpdt = self.thrusts_tpdt/self.mass
-        self.accel_tpdt_world = vectortoworld(
+
+        self.accel_tpdt += vectortolocal(g0, self.rot_matrix)
+        self.accel_tpdt_world = vectortoworld(self.accel_tpdt, self.rot_matrix)
+        '''self.accel_tpdt_world = vectortoworld(
                                                 self.accel_tpdt,
                                                 self.rot_matrix)
         # add gravity
@@ -132,6 +138,7 @@ class Rocket:
         self.accel_tpdt = vectortolocal(
             self.accel_tpdt_world,
             self.rot_matrix)
+'''
 
         '''print("accel:")
         print(self.accel)
