@@ -4,6 +4,8 @@
 * MatPlotLib 3.0.0 or higher - [Website](https://matplotlib.org/)
 * Bezier 0.9.0 or higher - [Website](https://pypi.org/project/bezier/)
 * SciPy Library - [Website](https://www.scipy.org/)
+* VPython - [Website](https://vpython.org/)
+  * Requires the Microsoft Visual C++ Build Tools [from here](https://visualstudio.microsoft.com/downloads/)
 
 ## Recommended
 Install the entire set of SciPy packages with pip using the command
