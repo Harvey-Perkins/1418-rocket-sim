@@ -12,6 +12,8 @@ import module_engine as me
 import module_rocket as mr
 import module_structure as ms
 import matplotlib.pyplot as plt
+import vpython as vp
+import time
 
 # file_path = "../data/load/thrustcurve/AeroTech_D10.eng"
 file_path = "../data/load/thrustcurve/AeroTech_D21.rse"
@@ -60,7 +62,15 @@ ax2 = ax1.twinx()
 ax2.set_ylabel("Thrust (N)")
 fig.tight_layout()
 
+location = vp.sphere(pos=vp.vector(0,100,0))
+center = vp.sphere(pos=vp.vector(0,0,0))
+
 while rocket.position[Z] >= 0 and rocket.position[Z] < 200:
+
+    location.pos = vp.vector(rocket.position[X],
+                        rocket.position[Z],
+                        rocket.position[Y])
+    time.sleep(0.01)
     counter += 1
     if counter >= 1000:
         rocket.position[Z] = -1
