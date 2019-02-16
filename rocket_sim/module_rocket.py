@@ -26,6 +26,7 @@ class Rocket:
     # Global orientation vectors.
     # Starts with no rotation, which means fire end towards ground,
     # pointy end towards space
+    # These are never used/updated after initializing the rotation matrix
     xorientation = np.array([1.0, 0.0, 0.0])
     yorientation = np.array([0.0, 1.0, 0.0])
     zorientation = np.array([0.0, 0.0, 1.0])
