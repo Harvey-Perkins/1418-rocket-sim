@@ -14,6 +14,7 @@ import module_structure as ms
 import matplotlib.pyplot as plt
 import vpython as vp
 import time
+from appJar import gui
 
 # file_path = "../data/load/thrustcurve/AeroTech_D10.eng"
 file_path = "../data/load/thrustcurve/AeroTech_D21.rse"
@@ -36,6 +37,24 @@ ys = []
 X = 0  # Makes accessing vector parts easier
 Y = 1
 Z = 2
+
+# gui based rocket construction
+setup = gui()
+setup.addLabel("Title", "Setup")
+# Left frame is for overall rocket setup
+setup.startFrame("Rocket", row=0, column=0)
+setup.addLabel("Rocket_title", "Rocket")
+setup.stopFrame()
+# Next frame is for engines
+setup.startFrame("Engines", row=0, column=1)
+setup.addLabel("Engines_title", "Engines")
+setup.stopFrame()
+# Last column is for inflight events
+setup.startFrame("Inflight", row=0, column=2)
+setup.addLabel("Inflight_title", "Inflight Events")
+setup.stopFrame()
+
+setup.go()
 
 # Initialize parts
 rocket = mr.Rocket(start_position, start_velocity)
