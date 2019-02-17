@@ -12,7 +12,7 @@ import module_engine as me
 import module_rocket as mr
 import module_structure as ms
 import matplotlib.pyplot as plt
-import vpython as vp
+
 import time
 from appJar import gui
 
@@ -25,10 +25,13 @@ file_path = "../data/load/thrustcurve/AeroTech_D21.rse"
 #               x,y,z
 g0 = np.array([0.0, 0.0, -9.81])
 acc = np.array([0.0, 0.0, 0.0])
-start_position = np.array([0.0, 0.0, 100.0])
+start_position = np.array([0.0, 0.0, 100.0])  # set by user
 start_velocity = np.array([0.0, 0.0, 0.0])
+visualization = False  # set by user
+graph = True  # set by user
 t = 0
-dt = 0.01
+dt = 0.01  # set by user
+delay = 0.01  # set by user, delay in animation
 counter = 0
 xs = []  # graph stuff
 thrustY = []
@@ -44,7 +47,15 @@ setup.addLabel("Title", "Setup")
 
 
 def confirm():
+    global visualization
     global start_position
+    global graph
+    global dt
+    global delay
+    visualization = setup.getCheckBox("Visualization")
+    graph = setup.getCheckBox("Graph")
+    dt = float(setup.getEntry("Physics delta time"))
+    delay = float(setup.getEntry("Visualization speed"))
     start_position = np.array([
         float(setup.getEntry("start_X")),
         float(setup.getEntry("start_Y")),
@@ -58,12 +69,30 @@ def nothing():
 
 
 setup.startTabbedFrame("Setup")
-# First tab is for rocket setup
+
+# first tab is for sim
+setup.startTab("Simulation")
+setup.addCheckBox("Visualization")
+setup.addCheckBox("Graph")
+setup.addLabelEntry("Physics delta time")
+setup.setEntry("Physics delta time", 0.01)
+setup.setEntryTooltip("Physics delta time", "Simulation precision")
+setup.addLabelEntry("Visualization speed")
+setup.setEntry("Visualization speed", 0.01)
+setup.setEntryTooltip(
+    "Visualization speed",
+    "How fast the animation runs, set same as delta time for near real time")
+setup.stopTab()
+
+# 2nd tab is for rocket setup
 setup.startTab("Rocket")
 setup.addLabel("Start Position")
 setup.addLabelEntry("start_X")
 setup.addLabelEntry("start_Y")
 setup.addLabelEntry("start_Z")
+setup.setEntry("start_X", 0)
+setup.setEntry("start_Y", 0)
+setup.setEntry("start_Z", 0)
 setup.stopTab()
 
 # Next tab is for engines
@@ -79,7 +108,6 @@ setup.addButton("Confirm", confirm)
 setup.addButton("Debug continue", nothing)
 
 setup.go()
-
 
 
 # Initialize parts
@@ -99,32 +127,37 @@ rocket.add_engine(engine1, np.array([1, 0, 0]))
 rocket.add_engine(engine2, np.array([-1, 0, 0]))
 rocket.add_structure(structure1, np.array([0.0, 0.0, 0.0]))
 
-# Graph stuff
-fig, ax1 = plt.subplots()
-ax1.set_ylabel("Altitude (m)")
-ax1.set_xlabel("Time (s)")
-ax2 = ax1.twinx()
-ax2.set_ylabel("Thrust (N)")
-fig.tight_layout()
+# Graph
+if graph:
+    fig, ax1 = plt.subplots()
+    ax1.set_ylabel("Altitude (m)")
+    ax1.set_xlabel("Time (s)")
+    ax2 = ax1.twinx()
+    ax2.set_ylabel("Thrust (N)")
+    fig.tight_layout()
 
-location = vp.sphere(pos=vp.vector(0, 100, 0))
-orientation = vp.arrow(pos=vp.vector(10, 0, 0), axis=vp.vector(0, 1, 0))
-center = vp.sphere(pos=vp.vector(0, 0, 0))
-rocket_zorientation = np.array([0, 0, 0])
+# Visualization
+if visualization:
+    import vpython as vp
+    location = vp.sphere(pos=vp.vector(0, 100, 0))
+    orientation = vp.arrow(pos=vp.vector(10, 0, 0), axis=vp.vector(0, 1, 0))
+    center = vp.sphere(pos=vp.vector(0, 0, 0))
+    rocket_zorientation = np.array([0, 0, 0])
 
 while rocket.position[Z] >= 0 and rocket.position[Z] < 200:
     # VPython stuff
-    location.pos = vp.vector(
-                        rocket.position[X],
-                        rocket.position[Z],
-                        rocket.position[Y])
-    rocket_zorientation = np.split(rocket.rot_matrix, 3)[2][0]
-    orientation.axis = 10 * vp.vector(
-                            rocket_zorientation[X],
-                            rocket_zorientation[Z],
-                            rocket_zorientation[Y])
-    print(rocket.velocity_world)
-    time.sleep(0.01)
+    if visualization:
+        location.pos = vp.vector(
+                            rocket.position[X],
+                            rocket.position[Z],
+                            rocket.position[Y])
+        rocket_zorientation = np.split(rocket.rot_matrix, 3)[2][0]
+        orientation.axis = 10 * vp.vector(
+                                rocket_zorientation[X],
+                                rocket_zorientation[Z],
+                                rocket_zorientation[Y])
+        # print(rocket.velocity_world)
+        time.sleep(delay)
 
     counter += 1
     if counter >= 1000:
@@ -136,10 +169,12 @@ while rocket.position[Z] >= 0 and rocket.position[Z] < 200:
     print(rocket.torques_world)'''
     if rocket.position[Z] == 100:  # Ignition command
         # plots arrow pointing to when the ignition command is sent
-        ax1.annotate(
-            'Ignition command',
-            xy=(t, rocket.position[Z]), xytext=(2, 12),
-            arrowprops=dict(facecolor='black', shrink=0))
+        if graph:
+            ax1.annotate(
+                'Ignition command',
+                xy=(t, rocket.position[Z]), xytext=(2, 12),
+                arrowprops=dict(facecolor='black', shrink=0))
+
         engine1.ignite(0, t)  # Ignition command
         engine2.ignite(0, t)
     rocket.update(t, dt)
@@ -164,8 +199,8 @@ print(max)
 
 print(t)
 
-ax1.plot(xs, ys)
-
-ax2.plot(xs, thrustY)
-
-plt.show()
+# graph
+if graph:
+    ax1.plot(xs, ys)
+    ax2.plot(xs, thrustY)
+    plt.show()
