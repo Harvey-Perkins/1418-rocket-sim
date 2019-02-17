@@ -62,18 +62,20 @@ ax2 = ax1.twinx()
 ax2.set_ylabel("Thrust (N)")
 fig.tight_layout()
 
-location = vp.sphere(pos=vp.vector(0,100,0))
-orientation = vp.arrow(pos=vp.vector(10,0,0), axis=vp.vector(0,1,0))
-center = vp.sphere(pos=vp.vector(0,0,0))
-rocket_zorientation = np.array([0,0,0])
+location = vp.sphere(pos=vp.vector(0, 100, 0))
+orientation = vp.arrow(pos=vp.vector(10, 0, 0), axis=vp.vector(0, 1, 0))
+center = vp.sphere(pos=vp.vector(0, 0, 0))
+rocket_zorientation = np.array([0, 0, 0])
 
 while rocket.position[Z] >= 0 and rocket.position[Z] < 200:
     # VPython stuff
-    location.pos = vp.vector(rocket.position[X],
+    location.pos = vp.vector(
+                        rocket.position[X],
                         rocket.position[Z],
                         rocket.position[Y])
     rocket_zorientation = np.split(rocket.rot_matrix, 3)[2][0]
-    orientation.axis = 10 * vp.vector(rocket_zorientation[X],
+    orientation.axis = 10 * vp.vector(
+                            rocket_zorientation[X],
                             rocket_zorientation[Z],
                             rocket_zorientation[Y])
     print(rocket.velocity_world)
