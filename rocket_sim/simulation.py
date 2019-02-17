@@ -45,6 +45,7 @@ X = 0  # Makes accessing vector parts easier
 Y = 1
 Z = 2
 
+
 # gui based rocket construction
 setup = gui()
 setup.addLabel("Title", "Setup")
@@ -56,6 +57,7 @@ def confirm():
     global graph
     global dt
     global delay
+    global structure1
     global structure1mass
     global structure1location
     visualization = setup.getCheckBox("Visualization")
@@ -66,6 +68,14 @@ def confirm():
         float(setup.getEntry("start_X")),
         float(setup.getEntry("start_Y")),
         float(setup.getEntry("start_Z"))])
+
+    structure1 = setup.getCheckBox("Structure 1")
+    structure1mass = float(setup.getEntry("Structure 1 mass"))
+    structure1location = np.array([
+        float(setup.getEntry("st1_loc_X")),
+        float(setup.getEntry("st1_loc_Y")),
+        float(setup.getEntry("st1_loc_Z"))
+    ])
     setup.stop()
 
 
@@ -103,7 +113,17 @@ setup.stopTab()
 
 # structures
 setup.startTab("Structures")
-
+setup.addCheckBox("Structure 1")
+setup.setCheckBox("Structure 1", True)
+setup.addLabelEntry("Structure 1 mass")
+setup.setEntry("Structure 1 mass", 0.0736)
+setup.addLabel("Structure 1 location (relative to origin)")
+setup.addLabelEntry("st1_loc_X")
+setup.addLabelEntry("st1_loc_Y")
+setup.addLabelEntry("st1_loc_Z")
+setup.setEntry("st1_loc_X", 0)
+setup.setEntry("st1_loc_Y", 0)
+setup.setEntry("st1_loc_Z", 0)
 setup.stopTab()
 
 # Next tab is for engines
@@ -211,6 +231,9 @@ print("Max alt:")
 print(max)
 
 print(t)
+
+if visualization:
+    vp.delete()
 
 # graph
 if graph:
