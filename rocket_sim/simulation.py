@@ -232,9 +232,6 @@ print(max)
 
 print(t)
 
-if visualization:
-    vp.delete()
-
 # graph
 if graph:
     ax1.plot(xs, ys)
