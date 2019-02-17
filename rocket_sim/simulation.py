@@ -41,20 +41,46 @@ Z = 2
 # gui based rocket construction
 setup = gui()
 setup.addLabel("Title", "Setup")
-# Left frame is for overall rocket setup
-setup.startFrame("Rocket", row=0, column=0)
-setup.addLabel("Rocket_title", "Rocket")
-setup.stopFrame()
-# Next frame is for engines
-setup.startFrame("Engines", row=0, column=1)
-setup.addLabel("Engines_title", "Engines")
-setup.stopFrame()
-# Last column is for inflight events
-setup.startFrame("Inflight", row=0, column=2)
-setup.addLabel("Inflight_title", "Inflight Events")
-setup.stopFrame()
+
+
+def confirm():
+    global start_position
+    start_position = np.array([
+        float(setup.getEntry("start_X")),
+        float(setup.getEntry("start_Y")),
+        float(setup.getEntry("start_Z"))])
+    setup.stop()
+
+
+def nothing():
+    setup.stop()
+    # This is so the values set inside the code itself can be used quickly
+
+
+setup.startTabbedFrame("Setup")
+# First tab is for rocket setup
+setup.startTab("Rocket")
+setup.addLabel("Start Position")
+setup.addLabelEntry("start_X")
+setup.addLabelEntry("start_Y")
+setup.addLabelEntry("start_Z")
+setup.stopTab()
+
+# Next tab is for engines
+setup.startTab("Engines")
+setup.stopTab()
+# Last tab is for inflight events
+setup.startTab("Inflight")
+setup.stopTab()
+
+setup.stopTabbedFrame()
+
+setup.addButton("Confirm", confirm)
+setup.addButton("Debug continue", nothing)
 
 setup.go()
+
+
 
 # Initialize parts
 rocket = mr.Rocket(start_position, start_velocity)
