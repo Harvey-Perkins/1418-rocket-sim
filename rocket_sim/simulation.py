@@ -2,7 +2,6 @@
 TODO:
 Make a proper test setup for this program
 
-Moment of inertia
 '''
 
 import numpy as np
@@ -37,6 +36,11 @@ xs = []  # graph stuff
 thrustY = []
 ys = []
 
+structure1 = True
+structure1mass = 0.0736  # user editable
+# user editable, relative to rocket engine
+structure1location = np.array([0.0, 0.0, 0.0])
+
 X = 0  # Makes accessing vector parts easier
 Y = 1
 Z = 2
@@ -52,6 +56,8 @@ def confirm():
     global graph
     global dt
     global delay
+    global structure1mass
+    global structure1location
     visualization = setup.getCheckBox("Visualization")
     graph = setup.getCheckBox("Graph")
     dt = float(setup.getEntry("Physics delta time"))
@@ -95,6 +101,11 @@ setup.setEntry("start_Y", 0)
 setup.setEntry("start_Z", 0)
 setup.stopTab()
 
+# structures
+setup.startTab("Structures")
+
+setup.stopTab()
+
 # Next tab is for engines
 setup.startTab("Engines")
 setup.stopTab()
@@ -112,7 +123,10 @@ setup.go()
 
 # Initialize parts
 rocket = mr.Rocket(start_position, start_velocity)
-structure1 = ms.Structure(0.0736)
+if structure1:
+    structure1 = ms.Structure(structure1mass)
+    rocket.add_structure(structure1, structure1location)
+
 engine1 = me.Engine(file_path,
                     np.array([0, 0, 1]),
                     1000,
@@ -125,7 +139,6 @@ engine2 = me.Engine(file_path,
 # rocket.add_engine(engine1, np.array([1, 0, -1.0]))
 rocket.add_engine(engine1, np.array([1, 0, 0]))
 rocket.add_engine(engine2, np.array([-1, 0, 0]))
-rocket.add_structure(structure1, np.array([0.0, 0.0, 0.0]))
 
 # Graph
 if graph:

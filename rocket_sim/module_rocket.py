@@ -2,6 +2,9 @@
 This should be a class that will be the entire rocket,
 with all the parts as sort of sub-pieces.
 It updates everything else when it is updated
+
+It also turned into the main simulation loop
+
 TODO:
 t + dt updates to rotation stuff
 
@@ -15,6 +18,7 @@ g0 = np.array([0.0, 0.0, -9.81])  # 0,0,-9.81
 
 class Rocket:
     '''The main rocket class'''
+    # The nightmarish list of variables to describe the rocket
     mass = 0  # sum of all nested object's masses
     position = np.array([0.0, 0.0, 0.0])  # Global position of the rocket's CoM
     velocity = np.array([0.0, 0.0, 0.0])  # Global velocity of the rocket's CoM
@@ -48,7 +52,7 @@ class Rocket:
     # Center of thrust relative to rocket origin
     CoT = np.array([0.0, 0.0, 0.0])
     CoM = np.array([0.0, 0.0, 0.0])  # CoM relative to an arbitrary origin
-    # Sum of torques on the rocket in Nm. Local coords
+    # Sum of torques on the rocket in N*m. Local coords
     torques = np.array([0, 0, 0])
     torques_tpdt = np.array([0, 0, 0])  # For use after time update
     rot_matrix = np.array([xorientation, yorientation, zorientation])
@@ -160,7 +164,7 @@ class Rocket:
         # Call to add structure to the rocket
         self.structures.append(part)
         self.parts.append(part)
-        part.location = location
+        part.location = location  # relative to rocket origin
 
 # Object end
 
