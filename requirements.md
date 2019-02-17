@@ -6,6 +6,7 @@
 * SciPy Library - [Website](https://www.scipy.org/)
 * VPython - [Website](https://vpython.org/)
   * Requires the Microsoft Visual C++ Build Tools [from here](https://visualstudio.microsoft.com/downloads/)
+* appJar - [Website](http://appjar.info/)
 
 ## Recommended
 Install the entire set of SciPy packages with pip using the command
