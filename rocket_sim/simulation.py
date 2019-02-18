@@ -16,7 +16,8 @@ import time
 from appJar import gui
 
 # file_path = "../data/load/thrustcurve/AeroTech_D10.eng"
-file_path = "../data/load/thrustcurve/AeroTech_D21.rse"
+file_path1 = "../data/load/thrustcurve/AeroTech_D21.rse"
+file_path2 = "../data/load/thrustcurve/AeroTech_D21.rse"
 # file_path = "../data/load/thrustcurve/AeroTech_H45.edx"
 # file_path = "../data/load/thrustcurve/AeroTech_H125.txt"
 
@@ -36,10 +37,15 @@ xs = []  # graph stuff
 thrustY = []
 ys = []
 
-structure1 = True
+structure1enable = True
 structure1mass = 0.0736  # user editable
 # user editable, relative to rocket engine
 structure1location = np.array([0.0, 0.0, 0.0])
+
+engine1enable = True
+engine1ve = 1000
+engine1vector = np.array([0.0, 0.0, 0.0])
+engine1loc = np.array([0.0, 0.0, 0.0])
 
 X = 0  # Makes accessing vector parts easier
 Y = 1
@@ -57,9 +63,13 @@ def confirm():
     global graph
     global dt
     global delay
-    global structure1
+    global structure1enable
     global structure1mass
     global structure1location
+    global engine1enable
+    global filepath1
+    global filepath2
+    global engine1ve, engine1vector, engine1loc
     visualization = setup.getCheckBox("Visualization")
     graph = setup.getCheckBox("Graph")
     dt = float(setup.getEntry("Physics delta time"))
@@ -69,13 +79,28 @@ def confirm():
         float(setup.getEntry("start_Y")),
         float(setup.getEntry("start_Z"))])
 
-    structure1 = setup.getCheckBox("Structure 1")
+    structure1enable = setup.getCheckBox("Structure 1")
     structure1mass = float(setup.getEntry("Structure 1 mass"))
     structure1location = np.array([
         float(setup.getEntry("st1_loc_X")),
         float(setup.getEntry("st1_loc_Y")),
         float(setup.getEntry("st1_loc_Z"))
     ])
+
+    engine1enable = setup.getCheckBox("Engine 1")
+    filepath1 = setup.getEntry("Engine 1 file")
+    engine1ve = setup.getEntry("Engine 1 Ve")
+    engine1vector = np.array([
+        float(setup.getEntry("Eng_1_vector_X")),
+        float(setup.getEntry("Eng_1_vector_Y")),
+        float(setup.getEntry("Eng_1_vector_Z"))
+    ])
+    engine1loc = np.array([
+        float(setup.getEntry("Eng_1_loc_X")),
+        float(setup.getEntry("Eng_1_loc_Y")),
+        float(setup.getEntry("Eng_1_loc_Z"))
+    ])
+
     setup.stop()
 
 
@@ -117,7 +142,7 @@ setup.addCheckBox("Structure 1")
 setup.setCheckBox("Structure 1", True)
 setup.addLabelEntry("Structure 1 mass")
 setup.setEntry("Structure 1 mass", 0.0736)
-setup.addLabel("Structure 1 location (relative to origin)")
+setup.addLabel("Structure 1 location (relative to rocket origin)")
 setup.addLabelEntry("st1_loc_X")
 setup.addLabelEntry("st1_loc_Y")
 setup.addLabelEntry("st1_loc_Z")
@@ -128,6 +153,28 @@ setup.stopTab()
 
 # Next tab is for engines
 setup.startTab("Engines")
+setup.addLabel("Engine 1")
+setup.addCheckBox("Engine 1")
+setup.setCheckBox("Engine 1", True)
+setup.addFileEntry("Engine 1 file")
+setup.setEntry("Engine 1 file", file_path1)
+setup.addLabelEntry("Engine 1 Ve")
+setup.setEntryTooltip("Engine 1 Ve", "Pulled from file if possible")
+setup.addLabel("Engine 1 thrust vector (unit vector)")
+setup.addLabelEntry("Eng_1_vector_X")
+setup.addLabelEntry("Eng_1_vector_Y")
+setup.addLabelEntry("Eng_1_vector_Z")
+setup.setEntry("Eng_1_vector_X", 0)
+setup.setEntry("Eng_1_vector_Y", 0)
+setup.setEntry("Eng_1_vector_Z", 1)
+setup.addLabel("Engine 1 location (realative to rocket origin)")
+setup.addLabelEntry("Eng_1_loc_X")
+setup.addLabelEntry("Eng_1_loc_Y")
+setup.addLabelEntry("Eng_1_loc_Z")
+setup.setEntry("Eng_1_loc_X", 0)
+setup.setEntry("Eng_1_loc_Y", 0)
+setup.setEntry("Eng_1_loc_Z", 0)
+setup.addLabel("CoT is the only thing not set here, use the program itself for that")
 setup.stopTab()
 # Last tab is for inflight events
 setup.startTab("Inflight")
@@ -143,21 +190,23 @@ setup.go()
 
 # Initialize parts
 rocket = mr.Rocket(start_position, start_velocity)
-if structure1:
+if structure1enable:
     structure1 = ms.Structure(structure1mass)
     rocket.add_structure(structure1, structure1location)
 
-engine1 = me.Engine(file_path,
-                    np.array([0, 0, 1]),
-                    1000,
-                    np.array([0, 0, 0.05]))
-engine2 = me.Engine(file_path,
+if engine1enable:
+    engine1 = me.Engine(file_path1,
+                        engine1vector,
+                        engine1ve,
+                        np.array([0, 0, 0.05]))
+    rocket.add_engine(engine1, engine1loc)
+
+engine2 = me.Engine(file_path2,
                     np.array([0, 0, -1]),
                     1000,
                     np.array([0, 0, 0.05]))
 # Stick them on the rocket
 # rocket.add_engine(engine1, np.array([1, 0, -1.0]))
-rocket.add_engine(engine1, np.array([1, 0, 0]))
 rocket.add_engine(engine2, np.array([-1, 0, 0]))
 
 # Graph
