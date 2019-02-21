@@ -152,7 +152,7 @@ setup.setEntry("st1_loc_Z", 0)
 setup.stopTab()
 
 # Next tab is for engines
-setup.startTab("Engines")
+setup.startTab("Engine 1")
 setup.addLabel("Engine 1")
 setup.addCheckBox("Engine 1")
 setup.setCheckBox("Engine 1", True)
@@ -176,6 +176,32 @@ setup.setEntry("Eng_1_loc_Y", 0)
 setup.setEntry("Eng_1_loc_Z", 0)
 setup.addLabel("CoT is the only thing not set here, use the program itself for that")
 setup.stopTab()
+
+setup.startTab("Engine 2")
+setup.addLabel("Engine 2")
+setup.addCheckBox("Engine 2")
+setup.setCheckBox("Engine 2", True)
+setup.addFileEntry("Engine 2 file")
+setup.setEntry("Engine 2 file", file_path1)
+setup.addLabelEntry("Engine 2 Ve")
+setup.setEntryTooltip("Engine 2 Ve", "Pulled from file if possible")
+setup.addLabel("Engine 2 thrust vector (unit vector)")
+setup.addLabelEntry("Eng_2_vector_X")
+setup.addLabelEntry("Eng_2_vector_Y")
+setup.addLabelEntry("Eng_2_vector_Z")
+setup.setEntry("Eng_2_vector_X", 0)
+setup.setEntry("Eng_2_vector_Y", 0)
+setup.setEntry("Eng_2_vector_Z", 1)
+setup.addLabel("Engine 2 location (realative to rocket origin)")
+setup.addLabelEntry("Eng_2_loc_X")
+setup.addLabelEntry("Eng_2_loc_Y")
+setup.addLabelEntry("Eng_2_loc_Z")
+setup.setEntry("Eng_2_loc_X", 0)
+setup.setEntry("Eng_2_loc_Y", 0)
+setup.setEntry("Eng_2_loc_Z", 0)
+setup.addLabel("CoT is the only thing not set here, use the program itself for that")
+setup.stopTab()
+
 # Last tab is for inflight events
 setup.startTab("Inflight")
 setup.stopTab()
@@ -201,10 +227,11 @@ if engine1enable:
                         np.array([0, 0, 0.05]))
     rocket.add_engine(engine1, engine1loc)
 
-engine2 = me.Engine(file_path2,
-                    np.array([0, 0, -1]),
-                    1000,
-                    np.array([0, 0, 0.05]))
+if engine2enable:
+    engine2 = me.Engine(file_path2,
+                        np.array([0, 0, -1]),
+                        1000,
+                        np.array([0, 0, 0.05]))
 # Stick them on the rocket
 # rocket.add_engine(engine1, np.array([1, 0, -1.0]))
 rocket.add_engine(engine2, np.array([-1, 0, 0]))
