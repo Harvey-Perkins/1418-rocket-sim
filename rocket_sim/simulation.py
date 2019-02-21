@@ -47,6 +47,11 @@ engine1ve = 1000
 engine1vector = np.array([0.0, 0.0, 0.0])
 engine1loc = np.array([0.0, 0.0, 0.0])
 
+engine2enable = True
+engine2ve = 1000
+engine2vector = np.array([0.0, 0.0, 0.0])
+engine2loc = np.array([0.0, 0.0, 0.0])
+
 X = 0  # Makes accessing vector parts easier
 Y = 1
 Z = 2
@@ -66,10 +71,10 @@ def confirm():
     global structure1enable
     global structure1mass
     global structure1location
-    global engine1enable
-    global filepath1
-    global filepath2
+    global engine1enable, engine2enable
+    global filepath1, filepath2
     global engine1ve, engine1vector, engine1loc
+    global engine2ve, engine2vector, engine2loc
     visualization = setup.getCheckBox("Visualization")
     graph = setup.getCheckBox("Graph")
     dt = float(setup.getEntry("Physics delta time"))
@@ -99,6 +104,20 @@ def confirm():
         float(setup.getEntry("Eng_1_loc_X")),
         float(setup.getEntry("Eng_1_loc_Y")),
         float(setup.getEntry("Eng_1_loc_Z"))
+    ])
+
+    engine2enable = setup.getCheckBox("Engine 2")
+    filepath2 = setup.getEntry("Engine 2 file")
+    engine2ve = setup.getEntry("Engine 2 Ve")
+    engine2vector = np.array([
+        float(setup.getEntry("Eng_2_vector_X")),
+        float(setup.getEntry("Eng_2_vector_Y")),
+        float(setup.getEntry("Eng_2_vector_Z"))
+    ])
+    engine2loc = np.array([
+        float(setup.getEntry("Eng_2_loc_X")),
+        float(setup.getEntry("Eng_2_loc_Y")),
+        float(setup.getEntry("Eng_2_loc_Z"))
     ])
 
     setup.stop()
@@ -182,7 +201,7 @@ setup.addLabel("Engine 2")
 setup.addCheckBox("Engine 2")
 setup.setCheckBox("Engine 2", True)
 setup.addFileEntry("Engine 2 file")
-setup.setEntry("Engine 2 file", file_path1)
+setup.setEntry("Engine 2 file", file_path2)
 setup.addLabelEntry("Engine 2 Ve")
 setup.setEntryTooltip("Engine 2 Ve", "Pulled from file if possible")
 setup.addLabel("Engine 2 thrust vector (unit vector)")
@@ -199,7 +218,7 @@ setup.addLabelEntry("Eng_2_loc_Z")
 setup.setEntry("Eng_2_loc_X", 0)
 setup.setEntry("Eng_2_loc_Y", 0)
 setup.setEntry("Eng_2_loc_Z", 0)
-setup.addLabel("CoT is the only thing not set here, use the program itself for that")
+setup.addLabel("CoT is the only thing not sеt here, use the program itself for that")
 setup.stopTab()
 
 # Last tab is for inflight events
@@ -229,12 +248,13 @@ if engine1enable:
 
 if engine2enable:
     engine2 = me.Engine(file_path2,
-                        np.array([0, 0, -1]),
-                        1000,
+                        engine2vector,
+                        engine2ve,
                         np.array([0, 0, 0.05]))
+    rocket.add_engine(engine2, engine2loc)
 # Stick them on the rocket
 # rocket.add_engine(engine1, np.array([1, 0, -1.0]))
-rocket.add_engine(engine2, np.array([-1, 0, 0]))
+
 
 # Graph
 if graph:
@@ -283,9 +303,10 @@ while rocket.position[Z] >= 0 and rocket.position[Z] < 200:
                 'Ignition command',
                 xy=(t, rocket.position[Z]), xytext=(2, 12),
                 arrowprops=dict(facecolor='black', shrink=0))
-
-        engine1.ignite(0, t)  # Ignition command
-        engine2.ignite(0, t)
+        if engine1enable:
+            engine1.ignite(0, t)  # Ignition command
+        if engine2enable:
+            engine2.ignite(0, t)
     rocket.update(t, dt)
 
     # print(rocket.mass)
