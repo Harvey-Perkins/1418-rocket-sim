@@ -25,14 +25,14 @@ file_path2 = "../data/load/thrustcurve/AeroTech_D21.rse"
 #               x,y,z
 g0 = np.array([0.0, 0.0, -9.81])
 acc = np.array([0.0, 0.0, 0.0])
-start_position = np.array([0.0, 0.0, 100.0])  # set by user
+start_position = np.array([0.0, 0.0, 0.0])  # set by user
 start_velocity = np.array([0.0, 0.0, 0.0])
 visualization = False  # set by user
 graph = True  # set by user
 t = 0
 dt = 0.01  # set by user
 delay = 0.01  # set by user, delay in animation
-counter = 0
+counter = 0  # safety for main loop
 xs = []  # graph stuff
 thrustY = []
 ys = []
@@ -44,13 +44,17 @@ structure1location = np.array([0.0, 0.0, 0.0])
 
 engine1enable = True
 engine1ve = 1000
-engine1vector = np.array([0.0, 0.0, 0.0])
+engine1vector = np.array([0.0, 0.0, 1.0])
 engine1loc = np.array([0.0, 0.0, 0.0])
+engine1start = 0
+engine1delay = 0
 
-engine2enable = True
+engine2enable = False
 engine2ve = 1000
-engine2vector = np.array([0.0, 0.0, 0.0])
+engine2vector = np.array([0.0, 0.0, 1.0])
 engine2loc = np.array([0.0, 0.0, 0.0])
+engine2start = 0
+engine2delay = 0
 
 X = 0  # Makes accessing vector parts easier
 Y = 1
@@ -73,8 +77,8 @@ def confirm():
     global structure1location
     global engine1enable, engine2enable
     global filepath1, filepath2
-    global engine1ve, engine1vector, engine1loc
-    global engine2ve, engine2vector, engine2loc
+    global engine1ve, engine1vector, engine1loc, engine1start, engine1delay
+    global engine2ve, engine2vector, engine2loc, engine2start, engine2delay
     visualization = setup.getCheckBox("Visualization")
     graph = setup.getCheckBox("Graph")
     dt = float(setup.getEntry("Physics delta time"))
@@ -105,6 +109,8 @@ def confirm():
         float(setup.getEntry("Eng_1_loc_Y")),
         float(setup.getEntry("Eng_1_loc_Z"))
     ])
+    engine1start = float(setup.getEntry("Engine 1 ignition time"))
+    engine1delay = float(setup.getEntry("Engine 1 ignition delay"))
 
     engine2enable = setup.getCheckBox("Engine 2")
     filepath2 = setup.getEntry("Engine 2 file")
@@ -119,6 +125,8 @@ def confirm():
         float(setup.getEntry("Eng_2_loc_Y")),
         float(setup.getEntry("Eng_2_loc_Z"))
     ])
+    engine2start = float(setup.getEntry("Engine 2 ignition time"))
+    engine2delay = float(setup.getEntry("Engine 2 ignition delay"))
 
     setup.stop()
 
@@ -133,7 +141,9 @@ setup.startTabbedFrame("Setup")
 # first tab is for sim
 setup.startTab("Simulation")
 setup.addCheckBox("Visualization")
+setup.setCheckBox("Visualization", visualization)
 setup.addCheckBox("Graph")
+setup.setCheckBox("Graph", graph)
 setup.addLabelEntry("Physics delta time")
 setup.setEntry("Physics delta time", 0.01)
 setup.setEntryTooltip("Physics delta time", "Simulation precision")
@@ -174,7 +184,7 @@ setup.stopTab()
 setup.startTab("Engine 1")
 setup.addLabel("Engine 1")
 setup.addCheckBox("Engine 1")
-setup.setCheckBox("Engine 1", True)
+setup.setCheckBox("Engine 1", engine1enable)
 setup.addFileEntry("Engine 1 file")
 setup.setEntry("Engine 1 file", file_path1)
 setup.addLabelEntry("Engine 1 Ve")
@@ -199,7 +209,7 @@ setup.stopTab()
 setup.startTab("Engine 2")
 setup.addLabel("Engine 2")
 setup.addCheckBox("Engine 2")
-setup.setCheckBox("Engine 2", True)
+setup.setCheckBox("Engine 2", engine2enable)
 setup.addFileEntry("Engine 2 file")
 setup.setEntry("Engine 2 file", file_path2)
 setup.addLabelEntry("Engine 2 Ve")
@@ -223,6 +233,15 @@ setup.stopTab()
 
 # Last tab is for inflight events
 setup.startTab("Inflight")
+setup.addLabel("The ignition times are in seconds after the sim starts")
+setup.addLabelEntry("Engine 1 ignition time")
+setup.setEntry("Engine 1 ignition time", engine1start)
+setup.addLabelEntry("Engine 1 ignition delay")
+setup.setEntry("Engine 1 ignition delay", engine1delay)
+setup.addLabelEntry("Engine 2 ignition time")
+setup.setEntry("Engine 2 ignition time", engine2start)
+setup.addLabelEntry("Engine 2 ignition delay")
+setup.setEntry("Engine 2 ignition delay", engine2delay)
 setup.stopTab()
 
 setup.stopTabbedFrame()
@@ -231,6 +250,7 @@ setup.addButton("Confirm", confirm)
 setup.addButton("Debug continue", nothing)
 
 setup.go()
+# End of gui stuff
 
 
 # Initialize parts
@@ -268,12 +288,13 @@ if graph:
 # Visualization
 if visualization:
     import vpython as vp
+    # Fix location
     location = vp.sphere(pos=vp.vector(0, 100, 0))
     orientation = vp.arrow(pos=vp.vector(10, 0, 0), axis=vp.vector(0, 1, 0))
     center = vp.sphere(pos=vp.vector(0, 0, 0))
     rocket_zorientation = np.array([0, 0, 0])
 
-while rocket.position[Z] >= 0 and rocket.position[Z] < 200:
+while rocket.position[Z] >= 0:
     # VPython stuff
     if visualization:
         location.pos = vp.vector(
@@ -289,13 +310,14 @@ while rocket.position[Z] >= 0 and rocket.position[Z] < 200:
         time.sleep(delay)
 
     counter += 1
-    if counter >= 1000:
+    if counter >= 10000:
         rocket.position[Z] = -1
     # print(rocket.rot_matrix)
     '''print("Torque vector local:")
     print(rocket.torques)
     print("Torque vector world:")
     print(rocket.torques_world)'''
+    '''
     if rocket.position[Z] == 100:  # Ignition command
         # plots arrow pointing to when the ignition command is sent
         if graph:
@@ -307,6 +329,23 @@ while rocket.position[Z] >= 0 and rocket.position[Z] < 200:
             engine1.ignite(0, t)  # Ignition command
         if engine2enable:
             engine2.ignite(0, t)
+    '''
+
+    if engine1enable and t == engine1start:
+        engine1.ignite(engine1delay, t)
+        if graph:
+            ax1.annotate(
+                'Ignition command',
+                xy=(t, rocket.position[Z]), xytext=(2, 12),
+                arrowprops=dict(facecolor='black', shrink=0))
+
+    if engine2enable and t == engine2start:
+        engine2.ignite(engine1delay, t)
+        if graph:
+            ax1.annotate(
+                'Ignition command',
+                xy=(t, rocket.position[Z]), xytext=(2, 12),
+                arrowprops=dict(facecolor='black', shrink=0))
     rocket.update(t, dt)
 
     # print(rocket.mass)
